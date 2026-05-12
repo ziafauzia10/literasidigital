@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rencana Pembelajaran Swipe Safe — Literasi Digital SMP/SMK</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #0a5c3e;
+  --green-mid: #1a8a5e;
+  --green-main: #22b07d;
+  --green-light: #d0f5e8;
+  --green-pale: #f0fdf7;
+  --amber: #f59e0b;
+  --amber-light: #fef3c7;
+  --coral: #ef4444;
+  --coral-light: #fee2e2;
+  --blue: #3b82f6;
+  --blue-light: #eff6ff;
+  --purple: #8b5cf6;
+  --purple-light: #f5f3ff;
+  --text-primary: #0f1a14;
+  --text-secondary: #4b6358;
+  --text-muted: #8aab99;
+  --bg: #f4faf7;
+  --surface: #ffffff;
+  --border: #d0e8dc;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 15px;
+}
+/* PRINT */
+@media print {
+  .no-print { display: none !important; }
+  .page-break { page-break-before: always; }
+  body { background: white; font-size: 12px; }
+  .hero { background: #1a8a5e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* LAYOUT */
+.wrapper { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #0a5c3e 0%, #22b07d 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  color: white;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem;
+}
+.hero h1 { font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 0.75rem; }
+.hero p { font-size: 15px; opacity: 0.85; max-width: 560px; line-height: 1.7; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; position: relative; z-index: 1; }
+.hero-badge {
+  font-size: 12px; font-weight: 600; padding: 5px 14px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; color: white;
+}
+
+/* SECTION */
+.section { margin-bottom: 2.5rem; }
+.section-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.section-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--green-main); color: white;
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 17px; font-weight: 700; color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 12px; color: var(--text-muted); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* CARDS */
+.card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.card-sm { padding: 1rem 1.25rem; }
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+
+/* TUJUAN */
+.tujuan-card {
+  background: var(--green-pale);
+  border: 1.5px solid var(--green-light);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.tujuan-num { font-size: 32px; font-weight: 700; color: var(--green-main); line-height: 1; margin-bottom: 8px; font-family: 'DM Mono', monospace; }
+.tujuan-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; }
+.tl-row {
+  display: grid; grid-template-columns: 72px 1px 1fr;
+  gap: 0 16px; position: relative;
+}
+.tl-time-col { text-align: right; padding: 0 0 2rem; }
+.tl-time {
+  font-size: 12px; font-weight: 700; color: var(--green-main);
+  font-family: 'DM Mono', monospace;
+  display: inline-block; margin-top: 2px;
+}
+.tl-label {
+  font-size: 10px; color: var(--text-muted); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.07em; margin-top: 2px;
+}
+.tl-spine-col { position: relative; display: flex; flex-direction: column; align-items: center; }
+.tl-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--green-main); border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--green-main);
+  flex-shrink: 0; margin-top: 4px; z-index: 1;
+}
+.tl-line { width: 2px; background: var(--green-light); flex: 1; margin-top: 4px; }
+.tl-row:last-child .tl-line { display: none; }
+.tl-content-col { padding: 0 0 2rem; }
+.tl-phase { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green-mid); margin-bottom: 3px; }
+.tl-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.tl-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
+.tl-content-box {
+  background: var(--green-pale); border: 1px solid var(--green-light);
+  border-radius: var(--radius-sm); padding: 10px 14px;
+  margin-top: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.65;
+}
+.tl-content-box b { color: var(--text-primary); }
+
+/* SCENARIO CARDS */
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.sc-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.sc-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.sc-header {
+  padding: 12px 16px 10px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.sc-num-badge {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.sc-meta { flex: 1; }
+.sc-topic { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; }
+.sc-char { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+.sc-body { padding: 14px 16px; }
+.sc-message {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+  font-style: italic; padding: 10px 12px;
+  background: var(--bg); border-radius: var(--radius-sm);
+  border-left: 3px solid var(--green-main);
+  margin-bottom: 12px;
+}
+.sc-risk-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
+.sc-risk-text { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 10px; }
+.sc-question-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-mid); margin-bottom: 6px; }
+.sc-question { font-size: 13px; color: var(--text-primary); font-weight: 600; line-height: 1.5; margin-bottom: 10px; }
+.sc-tips-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 6px; }
+.sc-tips-list { list-style: none; }
+.sc-tips-list li { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; padding: 3px 0; padding-left: 14px; position: relative; }
+.sc-tips-list li::before { content: '→'; position: absolute; left: 0; color: var(--green-main); font-size: 11px; }
+.sc-script { margin-top: 10px; padding: 10px 12px; background: var(--blue-light); border-radius: var(--radius-sm); }
+.sc-script-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 5px; }
+.sc-script-text { font-size: 12.5px; color: #1e3a5f; line-height: 1.6; }
+.sc-expand { width: 100%; padding: 10px 16px; font-size: 12px; font-weight: 600; color: var(--green-mid); background: var(--green-pale); border: none; border-top: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.15s; }
+.sc-expand:hover { background: var(--green-light); }
+.sc-detail { display: none; padding: 14px 16px; border-top: 1px solid var(--border); background: var(--bg); }
+.sc-detail.open { display: block; }
+
+/* RISK COLORS */
+.risk-cyber { --rc: #ef4444; --rcl: #fee2e2; }
+.risk-grooming { --rc: #f59e0b; --rcl: #fef3c7; }
+.risk-hoaks { --rc: #8b5cf6; --rcl: #f5f3ff; }
+.risk-penipuan { --rc: #3b82f6; --rcl: #eff6ff; }
+.risk-konten { --rc: #ec4899; --rcl: #fdf2f8; }
+.risk-positif { --rc: #22b07d; --rcl: #d0f5e8; }
+.risk-waktu { --rc: #f97316; --rcl: #fff7ed; }
+.risk-reputasi { --rc: #64748b; --rcl: #f1f5f9; }
+
+.sc-num-badge { background: var(--rcl); color: var(--rc); }
+.sc-topic { color: var(--rc); }
+.sc-risk-badge {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--rcl); color: var(--rc);
+  margin-bottom: 8px;
+}
+
+/* SCRIPT BOX */
+.script-block { margin-bottom: 10px; }
+.script-role {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.09em; margin-bottom: 5px;
+}
+.role-guru { color: var(--green-mid); }
+.role-siswa { color: var(--blue); }
+.role-tips { color: var(--amber); }
+.role-alt { color: var(--coral); }
+.script-text {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  font-size: 13.5px; line-height: 1.7; color: var(--text-primary);
+}
+.script-text em { font-style: italic; color: var(--text-muted); }
+.script-text .q { color: var(--green-mid); font-weight: 600; }
+
+/* DISKUSI */
+.diskusi-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.diskusi-num { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.diskusi-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.diskusi-questions { list-style: none; }
+.diskusi-questions li { font-size: 13.5px; color: var(--text-secondary); padding: 5px 0 5px 16px; position: relative; border-bottom: 1px dashed var(--border); line-height: 1.55; }
+.diskusi-questions li:last-child { border-bottom: none; }
+.diskusi-questions li::before { content: '?'; position: absolute; left: 0; color: var(--green-main); font-weight: 700; font-size: 13px; }
+
+/* KUIS */
+.kuis-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 14px; }
+.kuis-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.kuis-num { width: 32px; height: 32px; background: var(--green-main); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.kuis-q { font-size: 14.5px; font-weight: 600; line-height: 1.5; color: var(--text-primary); }
+.kuis-opts { display: flex; flex-direction: column; gap: 8px; }
+.kuis-opt {
+  width: 100%; text-align: left; padding: 10px 14px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg); font-size: 13.5px; color: var(--text-primary);
+  cursor: pointer; transition: all 0.15s; font-family: inherit;
+  display: flex; align-items: center; gap: 10px;
+}
+.kuis-opt:hover:not([disabled]) { background: var(--green-pale); border-color: var(--green-main); }
+.kuis-opt .opt-letter { font-weight: 700; font-size: 12px; color: var(--text-muted); min-width: 18px; font-family: 'DM Mono', monospace; }
+.kuis-opt.correct { background: var(--green-pale); border-color: var(--green-main); color: var(--green-dark); }
+.kuis-opt.correct .opt-letter { color: var(--green-main); }
+.kuis-opt.wrong { background: var(--coral-light); border-color: var(--coral); color: #7f1d1d; }
+.kuis-opt.wrong .opt-letter { color: var(--coral); }
+.kuis-opt.reveal { background: var(--green-pale); border-color: var(--green-main); color: var(--green-dark); }
+.kuis-feedback { margin-top: 10px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius-sm); display: none; }
+.kuis-feedback.show { display: block; }
+.kuis-feedback.ok { background: var(--green-pale); color: var(--green-dark); border: 1px solid var(--green-light); }
+.kuis-feedback.no { background: var(--coral-light); color: #7f1d1d; border: 1px solid #fca5a5; }
+.kuis-score-bar { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-top: 1rem; }
+.kuis-score-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.kuis-score-val { font-size: 36px; font-weight: 700; color: var(--green-main); font-family: 'DM Mono', monospace; }
+.kuis-score-sub { font-size: 13px; color: var(--text-muted); }
+.kuis-score-msg { font-size: 14px; color: var(--text-secondary); margin-top: 6px; font-style: italic; }
+.kuis-progress { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.kuis-pip { width: 28px; height: 6px; border-radius: 3px; background: var(--border); transition: background 0.2s; }
+.kuis-pip.done-ok { background: var(--green-main); }
+.kuis-pip.done-no { background: var(--coral); }
+
+/* PENILAIAN */
+.rubrik-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.rubrik-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+.rubrik-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.rubrik-table tr:last-child td { border-bottom: none; }
+.rubrik-table tr:hover td { background: var(--bg); }
+.bobot-badge { display: inline-block; font-size: 13px; font-weight: 700; color: var(--green-dark); background: var(--green-light); border-radius: 20px; padding: 2px 10px; }
+
+/* REFLEKSI */
+.refleksi-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 0; border-bottom: 1px dashed var(--border);
+}
+.refleksi-item:last-child { border-bottom: none; }
+.refleksi-num { width: 26px; height: 26px; background: var(--green-main); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.refleksi-text { font-size: 14px; color: var(--text-secondary); line-height: 1.65; padding-top: 2px; }
+
+/* REWARD */
+.reward-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.reward-icon { font-size: 24px; margin-bottom: 8px; }
+.reward-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.reward-desc { font-size: 12.5px; color: var(--text-secondary); line-height: 1.5; }
+
+/* TIPS */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.tips-card { border-radius: var(--radius); padding: 1.25rem; }
+.tips-card.green { background: var(--green-pale); border: 1.5px solid var(--green-light); }
+.tips-card.amber { background: var(--amber-light); border: 1.5px solid #fde68a; }
+.tips-card.blue { background: var(--blue-light); border: 1.5px solid #bfdbfe; }
+.tips-card.coral { background: var(--coral-light); border: 1.5px solid #fca5a5; }
+.tips-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.tips-card.green .tips-title { color: var(--green-dark); }
+.tips-card.amber .tips-title { color: #92400e; }
+.tips-card.blue .tips-title { color: #1e40af; }
+.tips-card.coral .tips-title { color: #7f1d1d; }
+.tips-list { list-style: none; }
+.tips-list li { font-size: 13px; line-height: 1.6; padding: 3px 0 3px 14px; position: relative; color: var(--text-secondary); }
+.tips-list li::before { content: '•'; position: absolute; left: 0; font-size: 14px; }
+.tips-card.green .tips-list li::before { color: var(--green-main); }
+.tips-card.amber .tips-list li::before { color: var(--amber); }
+.tips-card.blue .tips-list li::before { color: var(--blue); }
+.tips-card.coral .tips-list li::before { color: var(--coral); }
+
+/* TABS */
+.tabs-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.tab-btn {
+  font-size: 12.5px; font-weight: 600; padding: 6px 16px;
+  border-radius: 30px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text-secondary);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.tab-btn:hover { border-color: var(--green-main); color: var(--green-mid); }
+.tab-btn.active { background: var(--green-main); border-color: var(--green-main); color: white; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* PENUTUP */
+.penutup-box { background: linear-gradient(135deg, #0a5c3e, #22b07d); border-radius: var(--radius); padding: 2rem; color: white; }
+.penutup-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.penutup-box p { font-size: 14px; opacity: 0.9; line-height: 1.7; margin-bottom: 10px; }
+.kunci-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+.kunci-badge { font-size: 12px; font-weight: 600; padding: 5px 14px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-radius: 30px; }
+
+/* PRINT BTN */
+.print-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; background: var(--green-main); color: white;
+  border: none; border-radius: var(--radius-sm); font-size: 13.5px;
+  font-weight: 600; cursor: pointer; font-family: inherit; margin-bottom: 2rem;
+  transition: background 0.15s;
+}
+.print-btn:hover { background: var(--green-mid); }
+
+/* NAV */
+.toc { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+.toc-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 10px; }
+.toc-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.toc-link { font-size: 12.5px; font-weight: 600; padding: 5px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: all 0.15s; }
+.toc-link:hover { background: var(--green-pale); border-color: var(--green-main); color: var(--green-dark); }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* INLINE TAG */
+.tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; vertical-align: middle; }
+.tag-green { background: var(--green-light); color: var(--green-dark); }
+.tag-amber { background: var(--amber-light); color: #92400e; }
+.tag-coral { background: var(--coral-light); color: #7f1d1d; }
+.tag-blue { background: var(--blue-light); color: #1e40af; }
+.tag-purple { background: var(--purple-light); color: #4c1d95; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Rencana Pembelajaran Literasi Digital</div>
+  <h1>Swipe Safe: Aku Aman di Dunia Digital</h1>
+  <p>Panduan lengkap pembelajaran interaktif berbasis 12 skenario digital nyata. Dirancang untuk siswa SMP/SMK dengan metode praktik langsung, diskusi, dan kompetisi kuis.</p>
+  <div class="hero-meta">
+    <span class="hero-badge">⏱ 90 Menit</span>
+    <span class="hero-badge">🎓 SMP / SMK</span>
+    <span class="hero-badge">📱 Praktik Aplikasi</span>
+    <span class="hero-badge">👥 Diskusi Kelompok</span>
+    <span class="hero-badge">🏆 Kuis Kompetisi</span>
+    <span class="hero-badge">12 Skenario Digital</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc no-print">
+  <div class="toc-title">Daftar Isi Cepat</div>
+  <div class="toc-links">
+    <a href="#tujuan" class="toc-link">1. Tujuan</a>
+    <a href="#icebreaking" class="toc-link">2. Ice Breaking</a>
+    <a href="#apersepsi" class="toc-link">3. Apersepsi</a>
+    <a href="#alur" class="toc-link">4. Alur Kegiatan</a>
+    <a href="#skenario" class="toc-link">5. 12 Skenario</a>
+    <a href="#diskusi" class="toc-link">6. Diskusi Kelompok</a>
+    <a href="#refleksi" class="toc-link">7. Refleksi</a>
+    <a href="#kuis" class="toc-link">8. Kuis Kompetisi</a>
+    <a href="#penilaian" class="toc-link">9. Penilaian</a>
+    <a href="#reward" class="toc-link">10. Reward</a>
+    <a href="#tips" class="toc-link">11. Tips Guru</a>
+    <a href="#penutup" class="toc-link">12. Penutup</a>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc no-print">
+  <div class="toc-title">Daftar Isi Cepat</div>
+  <div class="toc-links">
+    <a href="#pendahuluan" class="toc-link">📖 Pendahuluan</a>
+    <a href="#tujuan" class="toc-link">1. Tujuan</a>
+    <a href="#icebreaking" class="toc-link">2. Ice Breaking</a>
+    <a href="#apersepsi" class="toc-link">3. Apersepsi</a>
+    <a href="#alur" class="toc-link">4. Alur Kegiatan</a>
+    <a href="#skenario" class="toc-link">5. 12 Skenario</a>
+    <a href="#diskusi" class="toc-link">6. Diskusi Kelompok</a>
+    <a href="#refleksi" class="toc-link">7. Refleksi</a>
+    <a href="#kuis" class="toc-link">8. Kuis Kompetisi</a>
+    <a href="#penilaian" class="toc-link">9. Penilaian</a>
+    <a href="#reward" class="toc-link">10. Reward</a>
+    <a href="#tips" class="toc-link">11. Tips Guru</a>
+    <a href="#penutup" class="toc-link">12. Penutup</a>
+  </div>
+</div>
+
+<!-- PENDAHULUAN -->
+<div class="section" id="pendahuluan">
+
+  <!-- Label atas -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#0a5c3e,#22b07d);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">📖</div>
+    <div>
+      <h2 style="font-size:20px;font-weight:700;">Pendahuluan</h2>
+      <div style="font-size:12px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.08em;">Latar Belakang · Tentang Swipe Safe · Cara Penggunaan Panduan Ini</div>
+    </div>
+  </div>
+
+  <!-- A. Latar Belakang -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+      <div style="width:4px;height:20px;background:var(--green-main);border-radius:2px;"></div>
+      <h3 style="font-size:16px;font-weight:700;">A. Latar Belakang — Mengapa Literasi Digital Mendesak?</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:16px;">
+      <div style="background:linear-gradient(135deg,#0a5c3e,#1a8a5e);border-radius:14px;padding:20px;color:white;">
+        <div style="font-size:36px;font-weight:700;font-family:'DM Mono',monospace;line-height:1;">220 Jt+</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">pengguna internet di Indonesia (2024) — sekitar 79% populasi</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#78350f,#d97706);border-radius:14px;padding:20px;color:white;">
+        <div style="font-size:36px;font-weight:700;font-family:'DM Mono',monospace;line-height:1;">6 dari 10</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">anak pernah mengalami atau menyaksikan perilaku tidak menyenangkan di dunia digital</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#1e3a5f,#2563eb);border-radius:14px;padding:20px;color:white;">
+        <div style="font-size:36px;font-weight:700;font-family:'DM Mono',monospace;line-height:1;">#1</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">kelompok pengguna internet dengan pertumbuhan tercepat: anak & remaja usia 10–19 tahun</div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:20px;">
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;">
+        Internet telah menjadi bagian tak terpisahkan dari kehidupan anak dan remaja Indonesia. Mereka menggunakannya untuk belajar, berkreasi, bersosialisasi, dan mengekspresikan diri. Namun, pertumbuhan akses yang sangat pesat ini tidak selalu diimbangi dengan kesiapan pengetahuan dan keterampilan untuk menghadapi risikonya.
+      </p>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;">
+        Cyberbullying, grooming online, penyebaran hoaks, penipuan digital, dan kecanduan layar bukan lagi ancaman abstrak — melainkan realita sehari-hari yang dihadapi siswa SMP dan SMK di seluruh Indonesia. Banyak siswa yang tidak memiliki kerangka berpikir yang memadai untuk mengenali bahaya ini, apalagi meresponsnya dengan tepat.
+      </p>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+        Di sinilah peran guru menjadi sangat krusial. Pembelajaran literasi digital bukan sekadar materi tambahan — ini adalah bekal hidup yang membentuk cara siswa berinteraksi, membuat keputusan, dan melindungi diri mereka di ruang digital yang akan mereka huni sepanjang hidup.
+      </p>
+    </div>
+  </div>
+
+  <!-- B. Apa itu Swipe Safe -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+      <div style="width:4px;height:20px;background:var(--green-main);border-radius:2px;"></div>
+      <h3 style="font-size:16px;font-weight:700;">B. Apa itu Aplikasi Swipe Safe?</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+      <!-- Kiri: deskripsi -->
+      <div style="background:var(--green-pale);border:1.5px solid var(--green-light);border-radius:14px;padding:20px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--green-mid);margin-bottom:8px;">Tentang Aplikasi</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:10px;">
+          <b style="color:var(--text-primary);">Swipe Safe</b> adalah aplikasi edukasi keamanan online berbasis web yang dikembangkan oleh <b>ChildFund Australia</b> dan didukung oleh <b>Pemerintah Australia</b>. Di Indonesia, program ini diimplementasikan oleh ChildFund International bersama mitra lokal termasuk <b>YKKS</b>, dan telah dikontekstualisasikan oleh <b>Kementerian Pendidikan Dasar Menengah (Kemendikdasmen) RI</b> menjadi bagian dari kurikulum <em>Tujuan Pembelajaran Berdaya (Berinteraksi Aman di Dunia Maya)</em>.
+        </p>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;">
+          Aplikasi ini menggunakan pendekatan <b>simulasi skenario interaktif</b> — siswa dihadapkan pada situasi digital yang nyata dan diminta membuat keputusan. Tidak ada ceramah, tidak ada buku teks. Siswa belajar dengan cara <em>melakukan dan merasakan langsung</em> konsekuensi dari setiap pilihan mereka.
+        </p>
+      </div>
+      <!-- Kanan: fitur dan akses -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:10px;">🔗 Akses Aplikasi</div>
+          <div style="background:var(--bg);border:1.5px solid var(--green-main);border-radius:8px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--green-dark);text-align:center;letter-spacing:0.02em;">app.swipesafe.org</div>
+          <div style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:6px;">Akses gratis · Tidak perlu daftar · Bisa dari HP/tablet/laptop</div>
+        </div>
+        <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:8px;">✅ Cara Kerja Aplikasi</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;background:var(--green-main);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Siswa membuka aplikasi — langsung muncul kartu skenario seperti chat</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;background:var(--green-main);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Tiap kartu berisi pesan dari karakter virtual dalam situasi digital tertentu</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;background:var(--green-main);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Siswa tekan MAINKAN → pilih respons dari beberapa pilihan yang tersedia</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;background:var(--green-main);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Aplikasi memberi umpan balik dan penjelasan atas pilihan yang diambil</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:20px;height:20px;background:var(--green-main);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">Skor dihitung otomatis — semakin baik keputusan, semakin tinggi poin</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 topik skenario overview -->
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:20px;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:12px;">📱 12 Topik Skenario dalam Aplikasi Swipe Safe</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;">
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fee2e2;border-radius:8px;"><span style="font-size:16px;">💬</span><div><div style="font-size:12px;font-weight:700;color:#7f1d1d;">Cyberbullying</div><div style="font-size:11px;color:#991b1b;">Lukas & Putri</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fef3c7;border-radius:8px;"><span style="font-size:16px;">⚠️</span><div><div style="font-size:12px;font-weight:700;color:#78350f;">Grooming Online</div><div style="font-size:11px;color:#92400e;">Donny & Seagull68</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#f5f3ff;border-radius:8px;"><span style="font-size:16px;">❌</span><div><div style="font-size:12px;font-weight:700;color:#4c1d95;">Hoaks & Misinformasi</div><div style="font-size:11px;color:#6d28d9;">Eva & vaksin COVID</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#eff6ff;border-radius:8px;"><span style="font-size:16px;">🎣</span><div><div style="font-size:12px;font-weight:700;color:#1e40af;">Penipuan & Phishing</div><div style="font-size:11px;color:#2563eb;">Rizky & kuis Marvel</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fdf2f8;border-radius:8px;"><span style="font-size:16px;">🎥</span><div><div style="font-size:12px;font-weight:700;color:#831843;">Konten Sensitif</div><div style="font-size:11px;color:#be185d;">Fery & video viral</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#f1f5f9;border-radius:8px;"><span style="font-size:16px;">🌐</span><div><div style="font-size:12px;font-weight:700;color:#334155;">Reputasi Online</div><div style="font-size:11px;color:#475569;">Riku & live TikTok</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#f1f5f9;border-radius:8px;"><span style="font-size:16px;">📤</span><div><div style="font-size:12px;font-weight:700;color:#334155;">Oversharing</div><div style="font-size:11px;color:#475569;">Via & foto penghargaan</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fff7ed;border-radius:8px;"><span style="font-size:16px;">⏱️</span><div><div style="font-size:12px;font-weight:700;color:#7c2d12;">Waktu Online Berlebih</div><div style="font-size:11px;color:#9a3412;">Stella & followers</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#fff7ed;border-radius:8px;"><span style="font-size:16px;">🎮</span><div><div style="font-size:12px;font-weight:700;color:#7c2d12;">Kecanduan Game Online</div><div style="font-size:11px;color:#9a3412;">Julio & game baru</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#d0f5e8;border-radius:8px;"><span style="font-size:16px;">✅</span><div><div style="font-size:12px;font-weight:700;color:#0a5c3e;">Peluang Internet</div><div style="font-size:11px;color:#1a8a5e;">Gemma & les online</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#d0f5e8;border-radius:8px;"><span style="font-size:16px;">🌿</span><div><div style="font-size:12px;font-weight:700;color:#0a5c3e;">Tanggung Jawab Online</div><div style="font-size:11px;color:#1a8a5e;">Joshua & aksi iklim</div></div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;background:#eff6ff;border-radius:8px;"><span style="font-size:16px;">🤝</span><div><div style="font-size:12px;font-weight:700;color:#1e40af;">Pertemanan Online</div><div style="font-size:11px;color:#2563eb;">Tommy & Kyda</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. Landasan Pedagogis -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+      <div style="width:4px;height:20px;background:var(--green-main);border-radius:2px;"></div>
+      <h3 style="font-size:16px;font-weight:700;">C. Landasan Pedagogis — Mengapa Pendekatan Ini Efektif?</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🧠</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Experiential Learning</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Siswa belajar dari pengalaman langsung menghadapi situasi, bukan dari ceramah. Keputusan yang dibuat sendiri jauh lebih mudah diingat dan diinternalisasi.</div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">💬</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Social Learning</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Diskusi kelompok dan presentasi memungkinkan siswa belajar dari perspektif teman sebaya — yang seringkali lebih persuasif dari penjelasan guru.</div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🎯</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Kontekstual & Relevan</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">12 skenario diambil dari situasi nyata yang sering dihadapi remaja Indonesia — bukan kasus dari luar negeri yang terasa jauh dan tidak relevan.</div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🔄</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Refleksi Kritis</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Setiap skenario mendorong siswa berpikir "mengapa", bukan sekadar "apa yang harus dilakukan" — membangun kemampuan berpikir kritis yang bisa diterapkan dalam situasi baru.</div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">🎮</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Gamifikasi</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Format game dengan poin dan skor meningkatkan motivasi intrinsik. Siswa bermain sambil belajar tanpa merasa sedang "diajar".</div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;">
+        <div style="font-size:20px;margin-bottom:8px;">❤️</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Pendekatan Kekuatan</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Fokus pada membangun kekuatan dan kompetensi siswa, bukan menakut-nakuti. Tujuannya adalah siswa yang berdaya, bukan siswa yang takut internet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D. Hubungan dengan Kurikulum -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+      <div style="width:4px;height:20px;background:var(--green-main);border-radius:2px;"></div>
+      <h3 style="font-size:16px;font-weight:700;">D. Hubungan dengan Kurikulum Nasional</h3>
+    </div>
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
+      <div style="background:linear-gradient(90deg,#0a5c3e,#22b07d);padding:12px 20px;">
+        <div style="font-size:13px;font-weight:700;color:white;">Keterkaitan dengan Kurikulum Merdeka & Mata Pelajaran</div>
+      </div>
+      <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Informatika</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Dampak sosial informatika, keamanan data, etika penggunaan teknologi, dan berpikir komputasional dalam konteks sosial</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">PPKN / Projek P5</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Dimensi Bernalar Kritis, Mandiri, dan Bergotong-royong dalam Profil Pelajar Pancasila — khususnya melalui diskusi kelompok dan pengambilan keputusan</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">BK / Konseling</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Layanan informasi terkait keamanan diri, pengenalan risiko sosial, dan pengembangan keterampilan sosial-emosional di lingkungan digital</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Bahasa Indonesia</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Literasi media dan informasi, analisis teks digital, membedakan fakta-opini-hoaks, dan memproduksi teks argumentatif dalam konteks digital</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Program Swipe Safe Resmi</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Tujuan Pembelajaran Berdaya (Berinteraksi Aman di Dunia Maya) — dikontekstualisasikan oleh Kemendikdasmen RI sebagai bagian dari kurikulum formal</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Kompetensi Abad 21</div>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">4C: Critical Thinking, Communication, Collaboration, Creativity — semua dipraktikkan dalam satu sesi pembelajaran ini</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E. Cara Menggunakan Panduan Ini -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+      <div style="width:4px;height:20px;background:var(--green-main);border-radius:2px;"></div>
+      <h3 style="font-size:16px;font-weight:700;">E. Cara Menggunakan Panduan Pembelajaran Ini</h3>
+    </div>
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px;">
+      <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:14px;">
+        Dokumen ini adalah <b style="color:var(--text-primary);">panduan lengkap siap pakai</b> yang mencakup semua yang dibutuhkan guru untuk mengajar satu sesi literasi digital 90 menit menggunakan aplikasi Swipe Safe. Berikut cara memanfaatkannya secara optimal:
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;">
+        <div style="background:var(--green-pale);border:1.5px solid var(--green-light);border-radius:10px;padding:14px;">
+          <div style="font-size:13px;font-weight:700;color:var(--green-dark);margin-bottom:8px;">📅 Sebelum Mengajar</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);">•</span>Baca bagian <b>Alur Kegiatan</b> untuk memahami urutan 90 menit secara keseluruhan</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);">•</span>Buka dan coba sendiri aplikasi Swipe Safe di <b>app.swipesafe.org</b> — rasakan pengalaman siswa</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);">•</span>Pastikan koneksi internet kelas cukup stabil, atau siapkan alternatif offline</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);">•</span>Cetak Lembar Kerja Siswa (bagian B) dan Kartu Refleksi jika diperlukan</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);">•</span>Fotokopi Panduan Orang Tua (bagian E) untuk dibagikan ke siswa</li>
+          </ul>
+        </div>
+        <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:14px;">
+          <div style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:8px;">🏫 Saat Mengajar</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--blue);">•</span>Gunakan <b>Script Guru</b> di setiap bagian sebagai panduan bicara — tidak perlu dihapalkan, cukup dipahami</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--blue);">•</span>Buka bagian <b>12 Skenario</b> di layar proyektor saat memandu diskusi kelas</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--blue);">•</span>Gunakan <b>Kuis Kompetisi</b> di bagian 8 langsung dari layar — siswa bisa bermain secara interaktif</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--blue);">•</span>Isi <b>Lembar Observasi Guru</b> (bagian D) selama atau segera setelah kelas untuk refleksi</li>
+          </ul>
+        </div>
+        <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:14px;">
+          <div style="font-size:13px;font-weight:700;color:#7c2d12;margin-bottom:8px;">📌 Catatan Penting</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--amber);">•</span>Panduan ini <b>fleksibel</b> — guru bebas menyesuaikan urutan atau durasi sesuai kondisi kelas</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--amber);">•</span>Tidak semua 12 skenario harus dimainkan dalam satu pertemuan — bisa dibagi 2 sesi</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--amber);">•</span>Jika ada siswa yang berbagi pengalaman pribadi yang sensitif, tangani dengan empati di luar kelas</li>
+            <li style="font-size:13px;color:var(--text-secondary);padding-left:14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--amber);">•</span>Role Play Cards (bagian A) bisa dijadikan aktivitas lanjutan di pertemuan berikutnya</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Program -->
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:20px;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">🏛️ Program & Mitra</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">🇦🇺</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">ChildFund Australia</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Penginisiasi program Swipe Safe</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">🏛️</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">Pemerintah Australia</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Australian Aid — pendukung program</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">🌏</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">ChildFund International</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Implementasi di Indonesia</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">🤝</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">YKKS</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Mitra lokal implementasi</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">🏫</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">Kemendikdasmen RI</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Kontekstualisasi kurikulum nasional</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:10px;">
+          <div style="font-size:22px;margin-bottom:4px;">👨‍🏫</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary);">Guru SMP/SMK</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">Ujung tombak perubahan perilaku</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pendahuluan -->
+
+<div class="divider"></div>
+
+<!-- 1. TUJUAN -->
+<div class="section" id="tujuan">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Tujuan Pembelajaran</h2>
+      <div class="section-subtitle">Kompetensi yang dicapai siswa</div>
+    </div>
+  </div>
+  <div class="grid-4">
+    <div class="tujuan-card"><div class="tujuan-num">01</div><div class="tujuan-text">Mengenali berbagai risiko di dunia online: cyberbullying, grooming, hoaks, penipuan, dan konten berbahaya</div></div>
+    <div class="tujuan-card"><div class="tujuan-num">02</div><div class="tujuan-text">Mengambil keputusan yang tepat saat menghadapi situasi digital yang berbahaya atau mencurigakan</div></div>
+    <div class="tujuan-card"><div class="tujuan-num">03</div><div class="tujuan-text">Mempraktikkan perilaku aman, bertanggung jawab, dan menghormati orang lain di internet</div></div>
+    <div class="tujuan-card"><div class="tujuan-num">04</div><div class="tujuan-text">Membangun kesadaran kritis terhadap konten, informasi, dan orang yang ditemui secara online</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2. ICE BREAKING -->
+<div class="section" id="icebreaking">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <h2>Ice Breaking — Tebak Skenario Digital</h2>
+      <div class="section-subtitle">5 menit — Pembuka suasana</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="script-block">
+      <div class="script-role role-guru">Script Guru</div>
+      <div class="script-text">
+        "Oke semua, kita mulai dengan game seru dulu ya! Aku bacain situasi, kalian kasih respons:<br><br>
+        <span class="q">👍 Jempol ke atas = AMAN</span><br>
+        <span class="q">👎 Jempol ke bawah = BAHAYA</span><br><br>
+        Tidak ada jawaban salah atau benar — aku mau lihat instinct kalian dulu. Siap?"
+      </div>
+    </div>
+    <div class="card">
+      <div class="sc-risk-label">Skenario Ice Breaking</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--text-secondary);line-height:1.6;border-left:3px solid var(--amber);">
+          <b>Skenario A:</b> "Teman baru di TikTok yang baru kamu follow minta nomor HP kamu karena mau kasih hadiah gratis."
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--text-secondary);line-height:1.6;border-left:3px solid var(--coral);">
+          <b>Skenario B:</b> "Kamu lihat video perkelahian di story teman. Kamu screenshoot dan share ke grup kelas supaya teman-teman tahu."
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--text-secondary);line-height:1.6;border-left:3px solid var(--blue);">
+          <b>Skenario C:</b> "Kamu dapat email kuis 'Pahlawan Marvel kamu siapa?' dan diminta isi nama, sekolah, dan tanggal lahir."
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:12px;" class="script-block">
+    <div class="script-role role-siswa">Kemungkinan Respons Siswa</div>
+    <div class="script-text">Skenario B paling memancing perdebatan — banyak yang merasa "cuma share" itu tidak masalah. Manfaatkan ini untuk membangun penasaran dan masuk ke topik jejak digital dan konten sensitif. Hargai semua jawaban, jangan menghakimi.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3. APERSEPSI -->
+<div class="section" id="apersepsi">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <h2>Apersepsi — Seberapa Aman Kamu Online?</h2>
+      <div class="section-subtitle">10 menit — Membangun koneksi dan pengetahuan awal</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div class="script-block">
+        <div class="script-role role-guru">Script Guru — Pertanyaan Pemantik</div>
+        <div class="script-text">
+          "Ada yang pernah dapat pesan aneh dari orang yang tidak dikenal di sosmed atau WhatsApp?<br><br>
+          Ada yang pernah lihat teman di-bully online atau di grup kelas?<br><br>
+          Ada yang pernah dapat info yang ternyata hoaks?"<br><br>
+          <em>(beri waktu 3–4 siswa berbagi cerita singkat)</em><br><br>
+          "Nah, semua situasi tadi NYATA. Hari ini kita belajar cara menghadapinya lewat aplikasi Swipe Safe. Kalian yang mutusin apa yang harus dilakukan di tiap situasi!"
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sc-risk-label">6 Kunci Berdaya Swipe Safe</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-top:8px;">
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">PUBLIK</b> — Semua yang diunggah berpotensi dilihat siapa pun</div></div>
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">PERMANEN</b> — Jejak digital tidak mudah dihapus</div></div>
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">KONEKSI</b> — Tidak semua orang online dapat dipercaya</div></div>
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">4</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">ANONIM</b> — Siapa pun bisa berpura-pura jadi orang lain</div></div>
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">5</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">SUMBER INFORMASI</b> — Tidak semua info online itu benar</div></div>
+        <div style="display:flex;gap:10px;align-items:center;"><div style="width:24px;height:24px;background:var(--green-main);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">6</div><div style="font-size:13px;color:var(--text-secondary);"><b style="color:var(--text-primary);">RASA HORMAT</b> — Hormati diri sendiri dan orang lain di dunia maya</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 4. ALUR KEGIATAN -->
+<div class="section" id="alur">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <h2>Alur Kegiatan — 90 Menit</h2>
+      <div class="section-subtitle">Timeline lengkap dengan estimasi waktu</div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">0–5'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Pembuka</div>
+        <div class="tl-title">Ice Breaking — Tebak Skenario Digital</div>
+        <div class="tl-desc">Guru membaca 3 situasi online singkat, siswa respons jempol atas/bawah. Bangun suasana seru, pancing rasa ingin tahu.</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">5–15'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Apersepsi</div>
+        <div class="tl-title">Seberapa Aman Kamu Online?</div>
+        <div class="tl-desc">Diskusi pengalaman online siswa, perkenalan 6 Kunci Berdaya Swipe Safe, perkenalan aplikasi, dan tujuan pembelajaran.</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">15–25'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Kegiatan Inti 1</div>
+        <div class="tl-title">Login & Eksplorasi Bersama</div>
+        <div class="tl-desc">Siswa buka <b>app.swipesafe.org</b>, guru panduan navigasi aplikasi, mainkan 1–2 skenario bersama-sama sebagai latihan.</div>
+        <div class="tl-content-box"><b>Instruksi:</b> "Buka browser di HP kalian, ketik <b>app.swipesafe.org</b>. Kalian akan lihat tampilan seperti chat dari teman-teman. Tiap kartu itu skenario yang harus kalian 'mainkan'. Baca pesannya, tekan MAINKAN, pilih respons yang menurut kalian paling tepat!"</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">25–45'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Kegiatan Inti 2</div>
+        <div class="tl-title">Main Swipe Safe — Babak Individu</div>
+        <div class="tl-desc">Tiap siswa memainkan minimal <b>8 dari 12 skenario</b> secara mandiri. Catat skor dan tandai skenario yang paling membingungkan untuk dibawa ke diskusi kelompok.</div>
+        <div class="tl-content-box"><b>Target:</b> Mainkan ≥8 skenario dalam 20 menit. Tandai ⭐ skenario yang paling sulit kamu putuskan. Perhatikan poin kamu — ini akan jadi nilai partisipasi!</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">45–60'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Diskusi Kelompok</div>
+        <div class="tl-title">Bedah Skenario Paling Sulit</div>
+        <div class="tl-desc">Kelompok 4–5 orang. Pilih <b>2 skenario</b> yang paling menarik atau membingungkan, diskusikan alasan di balik risiko dan pilihan terbaik.</div>
+        <div class="tl-content-box"><b>Panduan Diskusi:</b> (1) Skenario apa yang dipilih? (2) Kenapa situasi itu berbahaya? (3) Apa pilihan terbaik dan alasannya? (4) Pernahkah kalian alami situasi serupa? (5) Siapkan 1 orang untuk presentasi 2 menit.</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">60–70'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Presentasi</div>
+        <div class="tl-title">Sharing Hasil Kelompok</div>
+        <div class="tl-desc">Tiap kelompok presentasi 2 menit: skenario apa, pilihan apa, dan alasannya. Kelas bisa merespons atau menambah perspektif.</div>
+        <div class="tl-content-box"><b>Format Presentasi:</b> "Kelompok kami memilih skenario [nama]. Situasinya adalah... Kami memilih respons... karena... Kami juga mendiskusikan..."</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">70–80'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Kuis Kompetisi</div>
+        <div class="tl-title">Who's the Digital Guardian?</div>
+        <div class="tl-desc">Kuis cepat 12 soal (1 per skenario) berbasis situasi dari aplikasi. Jawab individu atau kelompok, skor otomatis terhitung.</div>
+        <div class="tl-content-box"><b>Format:</b> Guru bacakan pertanyaan / tampilkan di layar. Kelompok tercepat angkat tangan. Benar = +10 poin. Salah = 0 poin. Kelompok dengan skor tertinggi menang!</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time">80–90'</div><div class="tl-label">menit</div></div>
+      <div class="tl-spine-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content-col">
+        <div class="tl-phase">Penutup</div>
+        <div class="tl-title">Refleksi & Komitmen Digital</div>
+        <div class="tl-desc">Siswa menulis kartu refleksi: 1 hal terpenting yang dipelajari + 1 komitmen perubahan perilaku digital nyata mulai hari ini.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider page-break"></div>
+
+<!-- 5. 12 SKENARIO -->
+<div class="section" id="skenario">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <h2>12 Skenario Digital — Panduan Guru Lengkap</h2>
+      <div class="section-subtitle">Setiap skenario disertai analisis risiko, script guru, dan pertanyaan pemantik</div>
+    </div>
+  </div>
+  <div class="scenario-grid" id="sc-grid"></div>
+</div>
+
+<div class="divider page-break"></div>
+
+<!-- 6. DISKUSI KELOMPOK -->
+<div class="section" id="diskusi">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div>
+      <h2>Panduan Diskusi Kelompok</h2>
+      <div class="section-subtitle">15 menit — Kelompok 4–5 orang</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:14px;">
+    <div class="script-block">
+      <div class="script-role role-guru">Script Instruksi Diskusi</div>
+      <div class="script-text">
+        "Sekarang bentuk kelompok 4–5 orang. Dari semua skenario yang kalian mainkan tadi, pilih <b>2 skenario yang paling kalian ingat</b> — bisa karena membingungkan, mengejutkan, atau pernah kalian alami sendiri.<br><br>
+        Diskusikan selama 10 menit, lalu siapkan 1 orang untuk presentasi singkat. Ingat: tidak ada jawaban yang 100% salah — yang penting ada alasan yang kuat!"
+      </div>
+    </div>
+    <div class="script-block">
+      <div class="script-role role-tips">Tips Kondisikan Diskusi</div>
+      <div class="script-text">
+        Jika ada kelompok yang memilih skenario yang sama, bagus — mereka bisa saling compare argumen saat presentasi.<br><br>
+        Perhatikan jika ada siswa yang pendiam — dorong mereka berbicara dengan pertanyaan: "Menurut kamu pribadi, apa yang akan kamu lakukan kalau kamu jadi [nama karakter]?"
+      </div>
+    </div>
+  </div>
+  <div class="grid-2" id="diskusi-grid"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 7. REFLEKSI -->
+<div class="section" id="refleksi">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div>
+      <h2>Pertanyaan Refleksi Siswa</h2>
+      <div class="section-subtitle">Penutup kegiatan inti — jawab di kartu refleksi</div>
+    </div>
+  </div>
+  <div class="card" id="refleksi-container"></div>
+</div>
+
+<div class="divider page-break"></div>
+
+<!-- 8. KUIS -->
+<div class="section" id="kuis">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div>
+      <h2>Kuis Kompetisi — Who's the Digital Guardian?</h2>
+      <div class="section-subtitle">10 menit — 12 soal berbasis skenario aplikasi</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="script-block">
+      <div class="script-role role-guru">Cara Jalankan Kuis</div>
+      <div class="script-text">Bisa dimainkan dua mode:<br><br>
+        <b>Mode Kompetisi Kelompok:</b> Guru bacakan soal, kelompok tercepat angkat tangan. Benar = +10 poin. Catat di papan tulis.<br><br>
+        <b>Mode Individual (HP):</b> Tampilkan dokumen ini di layar proyektor, siswa jawab di HP masing-masing menggunakan kuis interaktif di bawah.
+      </div>
+    </div>
+    <div class="kuis-score-bar" id="score-bar">
+      <div class="kuis-score-title">Progres Kuis</div>
+      <div style="display:flex;align-items:baseline;gap:8px;">
+        <div class="kuis-score-val" id="score-val">0</div>
+        <div class="kuis-score-sub">/ <span id="score-total">0</span> benar</div>
+      </div>
+      <div class="kuis-score-msg" id="score-msg">Jawab soal di bawah untuk mulai!</div>
+      <div class="kuis-progress" id="kuis-progress"></div>
+    </div>
+  </div>
+  <div id="kuis-container"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 9. PENILAIAN -->
+<div class="section" id="penilaian">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div>
+      <h2>Rubrik Penilaian</h2>
+      <div class="section-subtitle">Penilaian holistik 5 aspek</div>
+    </div>
+  </div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <table class="rubrik-table">
+      <thead>
+        <tr>
+          <th style="width:20%">Aspek</th>
+          <th style="width:50%">Indikator Penilaian</th>
+          <th style="width:15%">Bobot</th>
+          <th style="width:15%">Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Partisipasi Aktif</b></td><td>Memainkan ≥8 skenario di aplikasi; aktif dalam ice breaking, apersepsi, dan diskusi kelas</td><td><span class="bobot-badge">20%</span></td><td>Observasi guru</td></tr>
+        <tr><td><b>Ketepatan Pilihan</b></td><td>Skor dari aplikasi Swipe Safe: jumlah pilihan tepat dan berkualitas dari total skenario yang dimainkan</td><td><span class="bobot-badge">25%</span></td><td>Screenshot skor app</td></tr>
+        <tr><td><b>Diskusi Kelompok</b></td><td>Kedalaman analisis risiko, kemampuan mengidentifikasi bahaya, kualitas argumen, dan kontribusi aktif dalam kelompok</td><td><span class="bobot-badge">25%</span></td><td>Lembar observasi</td></tr>
+        <tr><td><b>Presentasi</b></td><td>Kejelasan penyampaian, relevansi argumen, kemampuan menjawab pertanyaan, kepercayaan diri di depan kelas</td><td><span class="bobot-badge">20%</span></td><td>Peer assessment</td></tr>
+        <tr><td><b>Refleksi Tertulis</b></td><td>Kartu refleksi: kedalaman insight, konkretnya komitmen perubahan perilaku digital yang realistis</td><td><span class="bobot-badge">10%</span></td><td>Kumpulkan kartu</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 10. REWARD -->
+<div class="section" id="reward">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <h2>Sistem Reward Sederhana</h2>
+      <div class="section-subtitle">Meningkatkan motivasi dan partisipasi</div>
+    </div>
+  </div>
+  <div class="grid-4">
+    <div class="reward-card"><div class="reward-title">🏆 Digital Guardian Badge</div><div class="reward-desc">Stiker / cap khusus di buku untuk siswa dengan skor aplikasi tertinggi</div></div>
+    <div class="reward-card"><div class="reward-title">⭐ Nilai Plus</div><div class="reward-desc">+5 poin untuk kelompok dengan presentasi terbaik (pilihan kelas)</div></div>
+    <div class="reward-card"><div class="reward-title">🎯 Juara Kuis</div><div class="reward-desc">Bebas tugas 1x atau duduk di tempat pilihan sendiri selama 1 minggu</div></div>
+    <div class="reward-card"><div class="reward-title">📢 Apresiasi Publik</div><div class="reward-desc">"Kamu Digital Guardian hari ini!" diumumkan di depan kelas + foto</div></div>
+    <div class="reward-card"><div class="reward-title">💬 Refleksi Terbaik</div><div class="reward-desc">Kartu refleksi terbaik dibacakan guru sebagai inspirasi di akhir pelajaran</div></div>
+    <div class="reward-card"><div class="reward-title">🤝 Kolaborasi Terbaik</div><div class="reward-desc">Kelompok paling aktif dan saling mendukung mendapat pengakuan spesial</div></div>
+  </div>
+</div>
+
+<div class="divider page-break"></div>
+
+<!-- 11. TIPS GURU -->
+<div class="section" id="tips">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div>
+      <h2>Tips & Solusi Praktis untuk Guru</h2>
+      <div class="section-subtitle">Mengondisikan kelas, teknis, dan alternatif</div>
+    </div>
+  </div>
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab(event,'tips1')">Kondisikan Kelas</button>
+    <button class="tab-btn" onclick="switchTab(event,'tips2')">Siswa Kesulitan Login</button>
+    <button class="tab-btn" onclick="switchTab(event,'tips3')">Internet Lambat</button>
+    <button class="tab-btn" onclick="switchTab(event,'tips4')">Tidak Punya HP</button>
+  </div>
+  <div id="tips1" class="tab-pane active">
+    <div class="tips-grid">
+      <div class="tips-card green">
+        <div class="tips-title">🎯 Sebelum Mulai</div>
+        <ul class="tips-list">
+          <li>Buat kontrak kelas singkat di awal: "HP hanya untuk Swipe Safe selama 20 menit ini"</li>
+          <li>Minta siswa matikan notifikasi sosmed dan masuk mode fokus</li>
+          <li>Tunjuk 2–3 siswa sebagai "Digital Helper" yang bantu teman kesulitan teknis</li>
+          <li>Tulis URL di papan tulis besar agar mudah diakses</li>
+        </ul>
+      </div>
+      <div class="tips-card amber">
+        <div class="tips-title">⏱ Saat Kegiatan Berlangsung</div>
+        <ul class="tips-list">
+          <li>Gunakan timer visual di papan tulis agar siswa tahu sisa waktu</li>
+          <li>Kelilingi kelas setiap 5 menit untuk pastikan siswa fokus pada aplikasi</li>
+          <li>Jika ada yang selesai lebih cepat, minta mereka mainkan skenario lainnya</li>
+          <li>Minta siswa tidak share jawaban ke teman — semua harus memutuskan sendiri dulu</li>
+        </ul>
+      </div>
+      <div class="tips-card blue">
+        <div class="tips-title">💡 Skenario yang Paling Memancing Diskusi</div>
+        <ul class="tips-list">
+          <li>Grooming Online (Donny/Seagull68): paling mengejutkan karena terasa seperti "sponsor biasa"</li>
+          <li>Hoaks Vaksin (Eva): banyak siswa yang pernah dapat info serupa dari keluarga</li>
+          <li>Cyberbullying (Lukas): dekat dengan pengalaman nyata di grup kelas</li>
+          <li>Penipuan Kuis (Rizky): paling sering dianggap "tidak berbahaya" sebelum dianalisis</li>
+        </ul>
+      </div>
+      <div class="tips-card coral">
+        <div class="tips-title">⚠️ Isu Sensitif yang Mungkin Muncul</div>
+        <ul class="tips-list">
+          <li>Jika siswa berbagi pengalaman pribadi yang traumatis, hargai dan jangan dibesar-besarkan di depan kelas</li>
+          <li>Hindari mempermalukan siswa yang salah pilih di aplikasi — tidak ada yang sempurna</li>
+          <li>Jika siswa mengaku pernah jadi korban, tindak lanjut secara privat setelah kelas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tips2" class="tab-pane">
+    <div class="tips-grid">
+      <div class="tips-card green">
+        <div class="tips-title">🔗 Masalah URL / Akses</div>
+        <ul class="tips-list">
+          <li>Tulis URL di papan: <b>app.swipesafe.org</b> — bukan dari ingatan</li>
+          <li>Pastikan siswa buka browser biasa (Chrome/Firefox/Edge), bukan melalui aplikasi sosmed</li>
+          <li>Jika ada error loading, minta siswa refresh sekali — biasanya cukup</li>
+          <li>Coba mode incognito/privat jika ada masalah cache</li>
+        </ul>
+      </div>
+      <div class="tips-card amber">
+        <div class="tips-title">📱 Masalah Perangkat</div>
+        <ul class="tips-list">
+          <li>HP Android: gunakan Chrome terbaru</li>
+          <li>iPhone: Safari atau Chrome sama baiknya</li>
+          <li>Jika layar terlalu kecil, coba mode landscape</li>
+          <li>Minta siswa yang berhasil bantu teman yang tidak bisa — ini juga pembelajaran sosial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tips3" class="tab-pane">
+    <div class="tips-grid">
+      <div class="tips-card blue">
+        <div class="tips-title">📸 Alternatif 1: Screenshot Mode</div>
+        <ul class="tips-list">
+          <li>Tampilkan screenshot skenario (dari gambar yang disiapkan) di proyektor</li>
+          <li>Siswa tulis jawaban di kertas: nomor skenario + pilihan A/B/C + alasan singkat</li>
+          <li>Bahas bersama setelah semua skenario selesai</li>
+        </ul>
+      </div>
+      <div class="tips-card amber">
+        <div class="tips-title">🗣️ Alternatif 2: Read-Aloud Mode</div>
+        <ul class="tips-list">
+          <li>Guru bacakan skenario dengan lantang — ekspresif dan dramatis agar menarik</li>
+          <li>Siswa angkat tangan untuk memilih respons yang paling tepat</li>
+          <li>Langsung diskusikan alasan setelah setiap skenario</li>
+        </ul>
+      </div>
+      <div class="tips-card green">
+        <div class="tips-title">🖥️ Alternatif 3: Stasion Mode</div>
+        <ul class="tips-list">
+          <li>Siapkan 3–4 "stasion HP" yang bisa diakses (dari HP guru atau lab komputer)</li>
+          <li>Kelompok bergantian bermain di stasion selama 5 menit per giliran</li>
+          <li>Anggota yang menunggu diskusikan skenario sebelumnya</li>
+        </ul>
+      </div>
+      <div class="tips-card coral">
+        <div class="tips-title">📄 Alternatif 4: Offline Mode</div>
+        <ul class="tips-list">
+          <li>Gunakan PDF leaflet Swipe Safe yang sudah diunduh sebagai bahan diskusi offline</li>
+          <li>Cetak kartu skenario dan bagikan ke kelompok untuk didiskusikan</li>
+          <li>Fokus lebih banyak ke diskusi kelompok dan role play</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tips4" class="tab-pane">
+    <div class="tips-grid">
+      <div class="tips-card green">
+        <div class="tips-title">👫 Opsi Berbagi Perangkat</div>
+        <ul class="tips-list">
+          <li>Pasangkan 2 siswa per 1 HP — justru mendorong diskusi saat bermain</li>
+          <li>Siswa yang punya HP diminta untuk berbagi layar dengan teman sebangku</li>
+          <li>Rotasi HP tiap 5 skenario agar semua dapat giliran memegang kontrol</li>
+        </ul>
+      </div>
+      <div class="tips-card amber">
+        <div class="tips-title">✏️ Aktivitas Paralel</div>
+        <ul class="tips-list">
+          <li>Siswa tanpa HP: gambar/ilustrasikan skenario pilihan mereka di kertas sambil menunggu</li>
+          <li>Buat "lembar analisis skenario" yang bisa dikerjakan tanpa HP</li>
+          <li>Kelompokkan siswa tanpa HP dengan yang punya HP dalam satu tim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 12. PENUTUP -->
+<div class="section" id="penutup">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div>
+      <h2>Penutup & Kesimpulan</h2>
+      <div class="section-subtitle">10 menit terakhir — refleksi dan komitmen</div>
+    </div>
+  </div>
+  <div class="penutup-box">
+    <h3>Script Penutup Guru</h3>
+    <p>"Hari ini kalian sudah bermain, berdiskusi, dan berpikir kritis tentang dunia digital. Kalian bukan lagi sekadar pengguna internet — kalian sekarang adalah <b>Digital Guardian</b>."</p>
+    <p>"Ingat 6 Kunci Berdaya kita: semua yang kalian upload itu PUBLIK dan PERMANEN. Tidak semua orang online bisa dipercaya karena internet itu ANONIM. Selalu cek SUMBER INFORMASI sebelum percaya atau share. Dan yang terpenting: HORMATI diri sendiri dan orang lain di dunia maya."</p>
+    <p>"Kalau kalian ketemu situasi seperti yang kita pelajari hari ini — screenshot, cerita ke orang dewasa yang kalian percaya, dan laporkan. Kamu tidak sendirian. Jaga diri, jaga teman."</p>
+    <div class="kunci-list">
+      <span class="kunci-badge">PUBLIK</span>
+      <span class="kunci-badge">PERMANEN</span>
+      <span class="kunci-badge">KONEKSI</span>
+      <span class="kunci-badge">ANONIM</span>
+      <span class="kunci-badge">SUMBER INFORMASI</span>
+      <span class="kunci-badge">RASA HORMAT</span>
+    </div>
+  </div>
+  <div style="margin-top:16px;" class="card">
+    <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Nomor Darurat & Pelaporan</div>
+    <div class="grid-3">
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><b style="color:var(--text-primary);">SAPA 129</b><br>Layanan Sahabat Perempuan dan Anak<br><span style="color:var(--green-main);font-weight:600;">129 / 08111129129</span></div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><b style="color:var(--text-primary);">UPTD PPA Kota Semarang</b><br>Perlindungan Perempuan dan Anak<br><span style="color:var(--green-main);font-weight:600;">0811 2845 332</span></div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;"><b style="color:var(--text-primary);">P2TP2A Kab. Semarang</b><br>Pusat Pelayanan Terpadu<br><span style="color:var(--green-main);font-weight:600;">0816 653 358</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrapper -->
+
+<script>
+const skenarios = [
+  {
+    num: 1, char: "Riku", topic: "Reputasi Online", risk: "reputasi",
+    riskLabel: "Konten Kekerasan Berkedok Humor",
+    message: "Kamu nonton live TikTok orang yang pakai topeng tadi malam tidak? Dia bilang mau pergi memukul anjing! Tapi katanya cuma bercanda. Haha",
+    analisis: "Konten kekerasan terhadap hewan atau orang yang dibungkus dengan humor tetap merupakan konten berbahaya. Menonton dan tidak melaporkan = mendukung konten tersebut terus menyebar.",
+    pertanyaan: "Apakah konten kekerasan yang dikemas sebagai 'bercanda' tetap perlu dilaporkan?",
+    tips: ["Laporkan konten tersebut ke platform (flag/report)", "Tidak perlu ikut menonton ulang atau share ke teman", "Jelaskan ke teman bahwa bercanda soal kekerasan tetap salah", "Reputasi online dibentuk dari konten yang kamu dukung dan share"],
+    script: "\"Kira-kira, kalau kita nonton tapi tidak share — apakah itu cukup? Apa tanggung jawab kita sebagai penonton?\"",
+    diskusiQ: ["Apakah menonton tanpa share sudah cukup bertanggung jawab?", "Bagaimana cara melaporkan konten berbahaya di platform yang kamu gunakan?", "Apa yang membuat seseorang merasa konten kekerasan yang 'bercanda' itu tidak apa-apa?"]
+  },
+  {
+    num: 2, char: "Joshua", topic: "Bertanggung Jawab Online", risk: "positif",
+    riskLabel: "Aksi Nyata via Undangan Online",
+    message: "Hei! Aku diajak ikut aksi protes iklim yang akan diadakan akhir minggu ini. Aksi ini penting banget, jadi aku pikir aku akan ikut!",
+    analisis: "Mengikuti aksi nyata berdasarkan undangan online membutuhkan verifikasi terlebih dahulu. Bukan berarti semua aksi online adalah penipuan — tapi tanggung jawab kita untuk memastikan keamanan dan keabsahannya.",
+    pertanyaan: "Bagaimana memverifikasi keamanan dan keabsahan aksi offline yang diajak lewat internet?",
+    tips: ["Cek organisasi penyelenggara di website resmi atau sosmed terverifikasi", "Tanyakan kepada orang tua atau guru sebelum memutuskan ikut", "Cek apakah ada berita tentang aksi tersebut dari media terpercaya", "Pastikan kamu pergi bersama teman atau orang dewasa yang dipercaya"],
+    script: "\"Kalau kalian diajak ikut sesuatu yang positif lewat internet, apa saja yang perlu dicek dulu sebelum kalian commit ikut?\"",
+    diskusiQ: ["Apa bedanya antara aktivisme online yang aman dan yang berbahaya?", "Langkah apa yang Joshua harus ambil sebelum memutuskan ikut aksi?", "Bagaimana cara membedakan undangan aksi asli vs penipuan?"]
+  },
+  {
+    num: 3, char: "Eva", topic: "Sumber Informasi", risk: "hoaks",
+    riskLabel: "Hoaks Kesehatan",
+    message: "Kamu sudah baca artikel yang aku kirim ke kamu tentang vaksin COVID? Serem banget!! Janji ya kamu nggak akan divaksin! Tolong share ke semua orang yang kamu kenal",
+    analisis: "Hoaks kesehatan sangat berbahaya karena dapat memengaruhi keputusan kesehatan nyata. Teman yang berbagi hoaks biasanya tidak sadar — mereka pikir mereka membantu. Meminta 'janji' dan menyuruh 'share ke semua orang' adalah tanda klasik penyebaran misinformasi.",
+    pertanyaan: "Bagaimana merespons teman yang menyebarkan hoaks kesehatan tanpa merusak pertemanan?",
+    tips: ["Jangan share artikel sebelum cek sumbernya di situs terpercaya (WHO, Kemenkes)", "Cek artikel di platform cek fakta: Hoaxbuster, Cekfakta.com, Turnbackhoax.id", "Balas dengan sopan: 'Aku perlu cek dulu ya, jangan-jangan ini hoaks'", "Jika terbukti hoaks, beritahu teman dengan baik hati — bukan menghakimi"],
+    script: "\"Pernah dapat pesan dari orang yang kalian percaya tapi ternyata informasinya salah? Apa yang kalian rasakan? Apa yang kalian lakukan?\"",
+    diskusiQ: ["Kenapa hoaks lebih mudah menyebar dari teman ke teman dibanding dari orang asing?", "Apa ciri-ciri artikel yang kemungkinan besar adalah hoaks?", "Bagaimana cara memberitahu teman bahwa info yang dia share adalah hoaks?"]
+  },
+  {
+    num: 4, char: "Via", topic: "Berbagi Informasi Berlebihan", risk: "reputasi",
+    riskLabel: "Oversharing di Sosial Media",
+    message: "Kamu sudah lihat foto upacara penghargaan yang aku posting? Jangan lupa kasih like, ya! #BanggaBanget",
+    analisis: "Berbagi pencapaian di sosial media adalah hal normal. Namun, masalah muncul saat kita secara berlebihan mencari validasi eksternal, atau saat informasi yang dibagikan (lokasi sekolah, nama lengkap, seragam) bisa digunakan orang lain untuk keperluan yang tidak baik.",
+    pertanyaan: "Di mana batas antara berbagi pencapaian yang sehat dan oversharing yang berisiko?",
+    tips: ["Perhatikan apa saja yang terlihat di foto: nama sekolah, lokasi, nomor identitas", "Atur privasi akun agar hanya orang yang kamu kenal yang bisa melihat", "Berbagi pencapaian itu bagus — tapi tidak perlu meminta like secara eksplisit", "Tanya diri sendiri: 'Apakah aku share ini untuk berbagi kebahagiaan atau untuk validasi?'"],
+    script: "\"Menurut kalian, informasi apa saja yang berbahaya jika muncul di foto yang kalian upload ke sosmed?\"",
+    diskusiQ: ["Informasi apa dari foto sekolah yang bisa dimanfaatkan orang tak bertanggung jawab?", "Bagaimana perbedaan antara berbagi kebahagiaan vs mencari validasi online?", "Apa yang terjadi pada harga diri kita jika like/komentar tidak sebanyak yang diharapkan?"]
+  },
+  {
+    num: 5, char: "Lukas", topic: "Cyberbullying", risk: "cyber",
+    riskLabel: "Cyberbullying — Peran Saksi",
+    message: "Hei, obrolan dengan teman baruku mulai tidak nyaman. Mereka mulai menghina Putri... Aku jadi agak khawatir.",
+    analisis: "Cyberbullying sering terjadi di grup chat pribadi yang tidak terlihat guru atau orang tua. Lukas berada dalam posisi 'bystander' — saksi yang punya kekuatan untuk menghentikan atau membiarkan bullying terus terjadi. Diam = persetujuan tersirat.",
+    pertanyaan: "Apa tanggung jawab dan risiko seorang saksi cyberbullying di grup chat?",
+    tips: ["Jangan ikut tertawa atau menambah komentar negatif — ini memperkuat bullying", "Kirim pesan pribadi ke Putri untuk memberi dukungan", "Screenshot percakapan sebagai bukti", "Laporkan ke guru, BK, atau orang tua — ini bukan 'terlalu lebay'", "Pertimbangkan untuk keluar dari grup jika bullying terus berlanjut"],
+    script: "\"Kalau kalian ada di posisi Lukas, apa yang kalian takutkan kalau mau angkat bicara? Dan apa yang terjadi kalau kalian diam saja?\"",
+    diskusiQ: ["Mengapa banyak saksi bullying memilih diam meskipun merasa tidak nyaman?", "Apa perbedaan antara melaporkan bullying dan 'mengadu/menjilat'?", "Bagaimana cara mendukung korban cyberbullying tanpa membuat situasi makin buruk?"]
+  },
+  {
+    num: 6, char: "Donny", topic: "Grooming Online", risk: "grooming",
+    riskLabel: "Grooming Online — Pemberian Hadiah",
+    message: "Lihat deh dumbbell baruku! Keren banget, kan? Perlengkapan baru, dibelikan oleh temanku Seagull68. Sekarang dia jadi sponsor channelku. #Bangga",
+    analisis: "Ini adalah pola klasik grooming online: orang dewasa yang tidak dikenal secara personal membangun hubungan dengan anak/remaja melalui pemberian hadiah mahal, menjadi 'sponsor', lalu perlahan meminta sesuatu sebagai balasan. Anak sering tidak sadar karena merasa hubungan ini menguntungkan mereka.",
+    pertanyaan: "Tanda-tanda apa yang menunjukkan bahwa 'sponsor online' ini mungkin adalah grooming?",
+    tips: ["Orang yang baru dikenal online dan langsung memberi hadiah mahal = TANDA BAHAYA", "Ceritakan ke orang tua atau guru tentang 'sponsor' ini sebelum menerima lebih banyak hadiah", "Tanyakan: 'Apa yang dia minta sebagai balasan nanti?'", "Nama anonim (Seagull68) dan tidak pernah ketemu langsung = red flag", "Tidak ada yang benar-benar gratis di internet dari orang asing"],
+    script: "\"Apa yang membuat tawaran 'sponsor online' dari orang asing ini terasa menarik? Dan apa yang sebenarnya mungkin terjadi selanjutnya?\"",
+    diskusiQ: ["Apa bedanya antara sponsor channel yang sah dengan grooming online?", "Kenapa remaja sering tidak menyadari tanda-tanda grooming sampai terlambat?", "Apa yang harus dilakukan Donny sekarang setelah menerima hadiah?"]
+  },
+  {
+    num: 7, char: "Tommy", topic: "Siapa yang Kuajak Bicara di Internet", risk: "penipuan",
+    riskLabel: "Permintaan Pertemanan dari Orang Asing",
+    message: "Hai! Aku baru saja dapat permintaan pertemanan dari seseorang bernama Kyda. Dia kelihatannya baik, tapi sepertinya aku tidak kenal dia deh...?",
+    analisis: "Menerima pertemanan dari orang yang tidak dikenal adalah titik masuk utama untuk grooming, penipuan, dan berbagai risiko online lainnya. Profil yang 'kelihatannya baik' bisa dibuat siapa saja dalam 5 menit.",
+    pertanyaan: "Langkah apa yang harus dilakukan sebelum menerima permintaan pertemanan dari orang asing?",
+    tips: ["Periksa profil: apakah ada foto asli, postingan nyata, atau hanya profile picture saja?", "Cek apakah ada mutual friend (teman bersama) yang kalian kenal", "Jangan terima jika tidak ada satu pun petunjuk yang bisa memverifikasi identitas mereka", "Tidak masalah untuk abaikan atau tolak permintaan dari orang yang tidak dikenal", "Jika ragu, tanyakan ke teman atau orang tua sebelum menerima"],
+    script: "\"Apa yang membuat kita sering menerima pertemanan dari orang asing? Rasa penasaran? Ingin follower banyak? Takut tidak sopan jika menolak?\"",
+    diskusiQ: ["Apa risiko menerima pertemanan dari orang yang sama sekali tidak dikenal?", "Bagaimana cara memverifikasi apakah seseorang benar-benar 'aman' untuk diajak berteman online?", "Apakah menolak pertemanan orang asing itu tidak sopan?"]
+  },
+  {
+    num: 8, char: "Rizky", topic: "Penipuan dan Peretasan", risk: "penipuan",
+    riskLabel: "Phishing Berkedok Kuis Hiburan",
+    message: "Kamu suka Marvel, kan? Tadi aku dapat email kuis 'Pahlawan Marvel mana yang cocok denganmu?' Sepertinya seru.",
+    analisis: "Kuis online yang tidak jelas sumbernya adalah metode phishing yang populer. Mereka mengumpulkan data personal (nama, tanggal lahir, email, bahkan kata sandi jika diminta) dengan iming-iming hiburan. Data ini bisa dijual atau digunakan untuk meretas akun.",
+    pertanyaan: "Mengapa mengisi kuis online dari sumber tidak jelas bisa berbahaya bagi keamanan data?",
+    tips: ["Cek siapa pengirim email: apakah dari domain resmi atau alamat aneh?", "Kuis yang meminta nama lengkap, tanggal lahir, sekolah, atau email = WASPADA", "Jangan pernah isi kuis yang meminta username atau password akun sosmedmu", "Cek di Google apakah kuis tersebut diketahui sebagai phishing/penipuan", "Hapus email mencurigakan dan tandai sebagai spam"],
+    script: "\"Pernah ngisi kuis online? Data apa yang kalian masukkan? Apa yang kalian pikirkan saat itu tentang keamanannya?\"",
+    diskusiQ: ["Mengapa kuis tentang topik yang kita sukai (K-pop, game, Marvel) lebih mudah membuat kita lengah?", "Data apa saja yang aman dan tidak aman untuk diisi di kuis online?", "Apa yang bisa terjadi jika seseorang memiliki nama, tanggal lahir, dan sekolah kamu?"]
+  },
+  {
+    num: 9, char: "Fery", topic: "Konten Sensitif dan Menyinggung Perasaan", risk: "konten",
+    riskLabel: "Menyebarkan Konten Kekerasan",
+    message: "OMG, kamu sudah lihat video perkelahian yang lagi viral ini? Anak itu kelihatan terluka parah... kasihan sekali.",
+    analisis: "Meski diawali dengan rasa prihatin, menyebarkan video kekerasan tetap berbahaya: melanggar privasi korban, berpotensi mempermalukan korban lebih jauh, dan mendukung penyebaran konten yang mungkin ilegal. 'Kasihan' tidak membenarkan penyebarannya.",
+    pertanyaan: "Apakah menyebarkan video kekerasan dengan niat 'prihatin' tetap merugikan korban?",
+    tips: ["Menyebarkan video orang yang sedang dalam kondisi lemah = melanggar privasi mereka", "Lapor ke platform untuk menghapus video tersebut, bukan share", "Jika ada yang kenal korban, hubungi mereka secara privat untuk tawarkan bantuan", "Tanyakan diri sendiri: 'Apakah korban mau video ini disebarkan?'"],
+    script: "\"Bayangkan kalian yang ada di video itu — apa yang kalian rasakan jika video tersebut dilihat oleh ribuan orang?\"",
+    diskusiQ: ["Apa perbedaan antara 'membantu dengan share' dan 'memperparah situasi korban'?", "Bagaimana cara yang benar untuk merespons video kekerasan yang beredar?", "Kenapa otak kita lebih mudah share konten yang mengejutkan atau mengharukan?"]
+  },
+  {
+    num: 10, char: "Stella", topic: "Menghabiskan Terlalu Banyak Waktu Online", risk: "waktu",
+    riskLabel: "Kecanduan Validasi Online",
+    message: "Aku punya banyak followers sekarang! Keren kan? banyak orang yang suka kontenku. Aku harus terus buat postingan nih! #populer",
+    analisis: "Mengejar followers dan like dapat menjadi siklus kecanduan validasi yang tidak sehat. Ketergantungan pada persetujuan online dapat merusak harga diri, mengurangi waktu untuk aktivitas nyata, dan menciptakan kecemasan jika engagement menurun.",
+    pertanyaan: "Kapan keaktifan di sosial media berubah menjadi tidak sehat?",
+    tips: ["Tanyakan: apakah kamu membuat konten karena suka, atau karena takut follower berkurang?", "Tetapkan batas waktu harian untuk sosial media — gunakan fitur screen time", "Jangan hubungkan harga dirimu dengan jumlah like atau followers", "Aktivitas offline (olahraga, teman nyata, hobi) sama pentingnya dengan konten online", "Istirahat dari sosmed adalah hal yang sehat, bukan kelemahan"],
+    script: "\"Pernahkah kalian merasa cemas kalau tidak upload sesuatu dalam sehari? Apa yang kalian rasakan kalau postingan kalian tidak dapat banyak like?\"",
+    diskusiQ: ["Apa tanda-tanda bahwa seseorang sudah terlalu bergantung pada validasi sosial media?", "Bagaimana cara menikmati sosial media tanpa membiarkannya mengendalikan perasaan kita?", "Apakah jumlah followers menentukan nilai seseorang?"]
+  },
+  {
+    num: 11, char: "Gemma", topic: "Peluang-Peluang di Internet", risk: "positif",
+    riskLabel: "Peluang Belajar Online",
+    message: "Jika aku ingin masuk universitas, aku perlu nilai yang bagus, tetapi pelajaran Matematika sangat susah. Guruku bilang ada les sepulang sekolah tapi sayangnya tempat tinggalku jauh sekali.",
+    analisis: "Ini adalah skenario positif — internet menawarkan solusi nyata untuk keterbatasan akses. Ada banyak platform belajar online berkualitas yang bisa diakses gratis. Kuncinya adalah tahu cara mencari, mengevaluasi kualitas, dan menggunakannya secara efektif.",
+    pertanyaan: "Platform belajar online apa yang dapat membantu Gemma, dan bagaimana cara mengevaluasi kualitasnya?",
+    tips: ["Khan Academy (gratis, materi lengkap dari SD–SMA)", "Zenius, Ruangguru, Quipper (versi gratis tersedia)", "YouTube: cari kanal guru Matematika Indonesia yang terpercaya", "Cek apakah platform memiliki kurikulum yang sesuai dengan sekolah di Indonesia", "Buat jadwal belajar online yang konsisten, bukan hanya saat ujian"],
+    script: "\"Internet bukan cuma tempat hiburan dan risiko. Apa saja yang bisa kalian pelajari atau capai lewat internet yang tidak bisa kalian akses sebelumnya?\"",
+    diskusiQ: ["Apa saja platform belajar online yang kalian sudah gunakan? Bagaimana pengalaman kalian?", "Bagaimana cara membedakan konten pendidikan yang berkualitas dari yang tidak?", "Bagaimana internet bisa menjadi equalizer — menyamakan peluang bagi semua siswa?"]
+  },
+  {
+    num: 12, char: "Julio", topic: "Game Online", risk: "waktu",
+    riskLabel: "Kecanduan Game Online",
+    message: "Hai, apakah kamu sudah mencoba game online yang baru??? Seru sekali dan buat aku ketagihan mainnyahahaha. Aku tidak bisa berhenti!",
+    analisis: "Game online dirancang untuk membuat pemain ketagihan — ada sistem reward, notifikasi, dan level yang terus mendorong untuk main lebih lama. 'Tidak bisa berhenti' adalah tanda awal yang perlu diperhatikan, bukan ditertawakan.",
+    pertanyaan: "Bagaimana membedakan antara menikmati game dan sudah kecanduan game online?",
+    tips: ["Tanda kecanduan: lupa waktu makan/tidur, marah kalau diganggu, nilai menurun, jadi jarang sosialisasi", "Tetapkan batas waktu bermain — gunakan alarm atau fitur screen time", "Beri tahu teman yang kamu percaya jika kamu merasa sudah kecanduan", "Cari kegiatan offline yang sama menyenangkan sebagai alternatif", "Berbicara dengan orang tua atau guru BK jika sudah sulit dikontrol sendiri"],
+    script: "\"Siapa yang pernah main game sampai lupa waktu? Apa yang terjadi setelahnya — di sekolah, di rumah, dengan keluarga?\"",
+    diskusiQ: ["Apa perbedaan antara hobi game yang sehat dan kecanduan game?", "Mengapa industri game sengaja membuat sistemnya 'adiktif'?", "Bagaimana cara menikmati game tanpa merusak hal-hal penting lainnya?"]
+  }
+];
+
+const riskColors = {
+  reputasi: { bg: '#f1f5f9', border: '#94a3b8', label: '#334155', badge: '#64748b' },
+  positif: { bg: '#d0f5e8', border: '#22b07d', label: '#0a5c3e', badge: '#1a8a5e' },
+  hoaks: { bg: '#f5f3ff', border: '#8b5cf6', label: '#4c1d95', badge: '#7c3aed' },
+  penipuan: { bg: '#eff6ff', border: '#3b82f6', label: '#1e3a5f', badge: '#2563eb' },
+  cyber: { bg: '#fee2e2', border: '#ef4444', label: '#7f1d1d', badge: '#dc2626' },
+  grooming: { bg: '#fef3c7', border: '#f59e0b', label: '#78350f', badge: '#d97706' },
+  konten: { bg: '#fdf2f8', border: '#ec4899', label: '#831843', badge: '#db2777' },
+  waktu: { bg: '#fff7ed', border: '#f97316', label: '#7c2d12', badge: '#ea580c' }
+};
+
+function buildScenarios() {
+  const grid = document.getElementById('sc-grid');
+  skenarios.forEach(sc => {
+    const c = riskColors[sc.risk];
+    const card = document.createElement('div');
+    card.className = 'sc-card';
+    card.innerHTML = `
+      <div class="sc-header" style="background:${c.bg};border-bottom-color:${c.border}30;">
+        <div class="sc-num-badge" style="background:${c.bg};color:${c.badge};border:1.5px solid ${c.border};">${sc.num}</div>
+        <div class="sc-meta">
+          <div class="sc-topic" style="color:${c.badge};">${sc.topic}</div>
+          <div class="sc-char">${sc.char} — <span style="color:${c.badge};font-weight:600;">${sc.riskLabel}</span></div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-message">"${sc.message}"</div>
+        <div class="sc-expand" onclick="toggleDetail(this)" style="color:${c.badge};background:${c.bg};">
+          <span>Lihat Analisis & Panduan Guru</span>
+          <span style="font-size:16px;">▼</span>
+        </div>
+        <div class="sc-detail">
+          <div class="sc-risk-label">Analisis Risiko</div>
+          <div class="sc-risk-text">${sc.analisis}</div>
+          <div class="sc-question-label">Pertanyaan Pemantik Guru</div>
+          <div class="sc-question">${sc.pertanyaan}</div>
+          <div class="sc-tips-label">Tips untuk Siswa</div>
+          <ul class="sc-tips-list">${sc.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+          <div class="sc-script">
+            <div class="sc-script-label">Script Guru</div>
+            <div class="sc-script-text">${sc.script}</div>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleDetail(btn) {
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open');
+  btn.querySelector('span:last-child').textContent = isOpen ? '▼' : '▲';
+  btn.querySelector('span:first-child').textContent = isOpen ? 'Lihat Analisis & Panduan Guru' : 'Sembunyikan';
+}
+
+function buildDiskusi() {
+  const grid = document.getElementById('diskusi-grid');
+  const kelompoks = [
+    {
+      title: "Kelompok Topik: Bahaya Tidak Kasat Mata",
+      skenarios: ["Grooming Online (Donny/Seagull68)", "Penipuan Kuis (Rizky)", "Permintaan Pertemanan Asing (Tommy)"],
+      questions: [
+        "Mengapa bahaya online yang tidak terlihat langsung justru lebih berbahaya?",
+        "Apa persamaan dari ketiga skenario ini dalam cara pelakunya mendekati korban?",
+        "Bagaimana cara membangun 'insting bahaya' yang baik saat online?"
+      ]
+    },
+    {
+      title: "Kelompok Topik: Dampak pada Orang Lain",
+      skenarios: ["Cyberbullying (Lukas/Putri)", "Konten Kekerasan (Fery)", "Hoaks Vaksin (Eva)"],
+      questions: [
+        "Siapa saja yang dirugikan dari masing-masing tindakan di skenario ini?",
+        "Apa perbedaan antara 'tidak sengaja menyakiti' dan 'sengaja menyakiti' di dunia online?",
+        "Apa tanggung jawab kita terhadap orang lain di dunia digital?"
+      ]
+    },
+    {
+      title: "Kelompok Topik: Identitas & Harga Diri Online",
+      skenarios: ["Oversharing (Via)", "Validasi Followers (Stella)", "Game Kecanduan (Julio)"],
+      questions: [
+        "Bagaimana platform sosial media dirancang untuk membuat kita terus kembali?",
+        "Apa perbedaan antara identitas online dan identitas nyata seseorang?",
+        "Bagaimana cara menjaga kesehatan mental di era sosial media?"
+      ]
+    },
+    {
+      title: "Kelompok Topik: Menggunakan Internet Secara Positif",
+      skenarios: ["Peluang Belajar (Gemma)", "Aksi Iklim (Joshua)", "Reputasi Bertanggung Jawab (Riku)"],
+      questions: [
+        "Bagaimana internet bisa menjadi alat yang powerful untuk hal-hal positif?",
+        "Apa yang membedakan 'aktivisme online yang nyata' dari sekadar ikut-ikutan viral?",
+        "Bagaimana membangun reputasi online yang positif dan autentik?"
+      ]
+    }
+  ];
+  kelompoks.forEach((k, i) => {
+    const card = document.createElement('div');
+    card.className = 'diskusi-card';
+    card.innerHTML = `
+      <div class="diskusi-num">Kelompok Tematik ${i+1}</div>
+      <div class="diskusi-title">${k.title}</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">Skenario terkait: ${k.skenarios.join(' · ')}</div>
+      <ul class="diskusi-questions">${k.questions.map(q => `<li>${q}</li>`).join('')}</ul>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function buildRefleksi() {
+  const container = document.getElementById('refleksi-container');
+  const refleksis = [
+    "Dari semua skenario yang kamu mainkan, mana yang paling mirip dengan situasi yang pernah kamu atau temanmu alami? Ceritakan secara singkat.",
+    "Sebelum pelajaran ini, apakah kamu menyadari bahwa kuis online bisa mencuri data pribadimu? Apa yang akan kamu lakukan berbeda mulai sekarang?",
+    "Bayangkan kamu ada di posisi Lukas yang melihat teman di-bully di grup online. Apa satu langkah konkret yang kamu ambil sekarang?",
+    "Apakah ada skenario yang awalnya kamu pikir 'tidak berbahaya' tapi setelah diskusi kamu sadari ternyata berbahaya? Yang mana?",
+    "Tuliskan SATU komitmen perubahan perilaku digital yang spesifik dan realistis yang akan kamu mulai hari ini.",
+    "Jika adik kecilmu tiba-tiba dapat pesan dari orang asing yang memberi hadiah, apa yang akan kamu katakan padanya?"
+  ];
+  container.innerHTML = refleksis.map((r, i) => `
+    <div class="refleksi-item">
+      <div class="refleksi-num">${i+1}</div>
+      <div class="refleksi-text">${r}</div>
+    </div>
+  `).join('');
+}
+
+const kuisData = [
+  { sc: "Skenario 1 — Reputasi Online (Riku)", q: "Riku cerita tentang live TikTok bertopeng yang 'bercanda' mau memukul anjing. Apa tindakan yang paling tepat?", opts: ["Nonton saja tapi tidak share ke teman", "Laporkan (report/flag) konten tersebut ke platform", "Share ke teman agar semua tahu konten aneh itu", "Komentari di live-nya bahwa itu tidak lucu"], benar: 1, explain: "Melaporkan konten berbahaya ke platform adalah tindakan paling bertanggung jawab. Menonton tanpa share pun sudah menambah viewership yang menguntungkan pembuat konten tersebut." },
+  { sc: "Skenario 2 — Bertanggung Jawab (Joshua)", q: "Joshua diajak aksi protes iklim via pesan online. Apa langkah pertama yang harus dilakukan?", opts: ["Langsung daftar karena aksi ini penting dan positif", "Verifikasi organisasi penyelenggara dan minta izin orang tua dulu", "Ajak sebanyak mungkin teman untuk ramai-ramai pergi", "Abaikan saja karena aksi offline dari undangan online selalu berbahaya"], benar: 1, explain: "Verifikasi organisasi + izin orang tua adalah langkah wajib. Aksi positif pun tetap perlu dicek keamanannya sebelum diikuti." },
+  { sc: "Skenario 3 — Sumber Informasi (Eva)", q: "Eva minta kamu janji tidak vaksin dan share artikel COVID ke semua orang. Apa yang harus dilakukan?", opts: ["Langsung share karena Eva adalah teman yang dipercaya", "Cek sumber artikel di platform cek fakta, baru putuskan", "Tolak sharеnya tapi diam saja tanpa memberitahu Eva", "Langsung percaya karena kelihatannya serius dan serem"], benar: 1, explain: "Selalu verifikasi di platform cek fakta (Cekfakta.com, Turnbackhoax.id) sebelum mempercayai atau menyebarkan informasi kesehatan, meski dari teman sendiri." },
+  { sc: "Skenario 4 — Oversharing (Via)", q: "Via posting foto upacara penghargaan dengan informasi yang terlihat. Apa risiko utama yang perlu diperhatikan?", opts: ["Tidak ada risiko karena foto penghargaan itu hal positif", "Foto bisa mengungkap lokasi sekolah, nama, dan data pribadi yang bisa disalahgunakan", "Risiko utamanya adalah terlalu banyak orang jadi iri", "Risiko utamanya adalah via terlihat sombong"], benar: 1, explain: "Foto sekolah bisa mengungkap lokasi, seragam, nama, dan rutinitas — informasi yang bisa dimanfaatkan orang tak bertanggung jawab untuk grooming atau penipuan." },
+  { sc: "Skenario 5 — Cyberbullying (Lukas)", q: "Lukas melihat grup chat mulai menghina Putri. Sebagai saksi, apa tindakan yang paling tepat?", opts: ["Diam saja karena bukan urusan Lukas dan takut jadi target berikutnya", "Ikut tertawa agar diterima oleh teman-teman baru", "Kirim pesan support ke Putri secara privat dan simpan screenshot sebagai bukti", "Langsung marah ke semua anggota grup secara agresif"], benar: 2, explain: "Support privat ke korban + dokumentasi bukti adalah langkah terbaik. Diam = persetujuan tersirat. Marah agresif bisa memperburuk situasi dan membuat Lukas jadi target." },
+  { sc: "Skenario 6 — Grooming Online (Donny)", q: "Donny bangga dibelikan dumbbell mahal oleh 'teman online' Seagull68. Apa yang harus dilakukan?", opts: ["Terima saja, ini rezeki — orang baik memang ada di mana-mana", "Ceritakan ke orang tua atau guru sebelum menerima lebih banyak 'hadiah'", "Minta hadiah yang lebih besar karena dia mau memberikan", "Abaikan — toh sudah terlanjur diterima dan tidak ada yang terjadi"], benar: 1, explain: "Orang asing yang memberi hadiah mahal = tanda bahaya grooming. Segera ceritakan ke orang tua/guru SEBELUM menerima lebih banyak, karena pelaku grooming biasanya akan mulai meminta sesuatu sebagai 'balasan'." },
+  { sc: "Skenario 7 — Pertemanan Online (Tommy)", q: "Tommy dapat permintaan pertemanan dari Kyda yang tidak dikenal. Apa yang paling tepat?", opts: ["Terima karena profilnya kelihatan baik dan fotonya normal", "Periksa mutual friends, profil, dan verifikasi identitasnya sebelum memutuskan", "Tolak semua permintaan pertemanan dari siapapun yang tidak dikenal", "Tanya nomor HP-nya dulu untuk konfirmasi lewat WhatsApp"], benar: 1, explain: "Verifikasi melalui mutual friends dan memeriksa keaslian profil adalah langkah pertama. Menolak sepenuhnya tanpa evaluasi pun berlebihan — yang penting tahu cara menilai." },
+  { sc: "Skenario 8 — Penipuan (Rizky)", q: "Rizky dapat email kuis 'Pahlawan Marvel yang cocok denganmu'. Ini termasuk jenis risiko apa?", opts: ["Hiburan yang aman karena tentang topik populer", "Kemungkinan phishing — pengumpulan data pribadi berkedok kuis", "Promosi resmi dari Marvel yang sah", "Spam biasa yang tidak perlu dikhawatirkan"], benar: 1, explain: "Kuis yang meminta data personal (nama, tanggal lahir, email) dari sumber tidak jelas adalah teknik phishing klasik. Topik yang menarik (Marvel, K-pop, game) sengaja dipilih agar korban lengah." },
+  { sc: "Skenario 9 — Konten Sensitif (Fery)", q: "Fery mengajak nonton dan share video perkelahian viral karena 'kasihan' sama korbannya. Apa respons terbaik?", opts: ["Share agar banyak orang tahu dan bisa membantu korban", "Tonton sendiri tapi tidak share, cukup kirim komentar prihatin", "Jangan tonton/share, laporkan ke platform untuk dihapus, dan hubungi korban secara privat jika memungkinkan", "Share hanya ke grup terpercaya, bukan ke semua orang"], benar: 2, explain: "Menyebarkan video kekerasan — meski dengan niat prihatin — tetap melanggar privasi korban dan dapat memperparah trauma mereka. Laporkan ke platform dan dukung korban secara privat." },
+  { sc: "Skenario 10 — Waktu Online (Stella)", q: "Stella terus membuat postingan karena merasa 'harus' mempertahankan followers. Ini tanda apa?", opts: ["Tanda kerja keras dan dedikasi yang patut diapresiasi", "Kemungkinan tanda kecanduan validasi online yang tidak sehat", "Strategi konten yang cerdas untuk membangun karier sebagai influencer", "Tidak ada masalah — semua orang yang punya sosmed harus aktif"], benar: 1, explain: "Merasa 'harus' terus posting karena takut kehilangan followers adalah tanda kecanduan validasi eksternal yang dapat berdampak negatif pada kesehatan mental." },
+  { sc: "Skenario 11 — Peluang Internet (Gemma)", q: "Gemma butuh les Matematika tapi rumahnya jauh. Apa solusi terbaik menggunakan internet?", opts: ["Minta bantuan teman di WhatsApp saat malam sebelum ujian", "Gunakan platform belajar terpercaya seperti Khan Academy, Zenius, atau Ruangguru secara konsisten", "Cari jawaban soal di Google saat ujian berlangsung", "Tidak ada — les tatap muka tetap lebih baik dari apapun"], benar: 1, explain: "Platform belajar online berkualitas (Khan Academy, Zenius, Ruangguru) dapat menjadi solusi nyata untuk keterbatasan akses pendidikan. Internet sebagai equalizer!" },
+  { sc: "Skenario 12 — Game Online (Julio)", q: "Julio bilang tidak bisa berhenti main game online barunya. Tanda bahaya kecanduan yang paling serius adalah?", opts: ["Selalu ingin main game terbaru sebelum semua orang", "Nilai sekolah turun, waktu tidur berkurang, dan marah ketika diminta berhenti main", "Main game lebih dari 2 jam sehari di akhir pekan", "Lebih suka game single player dari multiplayer"], benar: 1, explain: "Nilai turun, kurang tidur, dan reaksi emosional ketika diminta berhenti adalah tanda-tanda kecanduan game yang perlu ditangani, bukan hanya durasi bermain." }
+];
+
+let kuisAnswers = new Array(kuisData.length).fill(null);
+
+function buildKuis() {
+  const container = document.getElementById('kuis-container');
+  const progress = document.getElementById('kuis-progress');
+  kuisData.forEach((item, qi) => {
+    const pip = document.createElement('div');
+    pip.className = 'kuis-pip';
+    pip.id = `pip-${qi}`;
+    progress.appendChild(pip);
+    const card = document.createElement('div');
+    card.className = 'kuis-card';
+    card.innerHTML = `
+      <div class="kuis-header">
+        <div class="kuis-num">${qi+1}</div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">${item.sc}</div>
+          <div class="kuis-q">${item.q}</div>
+        </div>
+      </div>
+      <div class="kuis-opts">
+        ${item.opts.map((opt, oi) => `
+          <button class="kuis-opt" onclick="answerKuis(${qi},${oi})" id="kuis-${qi}-${oi}">
+            <span class="opt-letter">${String.fromCharCode(65+oi)}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="kuis-feedback" id="kuis-fb-${qi}"></div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function answerKuis(qi, oi) {
+  if (kuisAnswers[qi] !== null) return;
+  kuisAnswers[qi] = oi;
+  const item = kuisData[qi];
+  item.opts.forEach((_, i) => {
+    const btn = document.getElementById(`kuis-${qi}-${i}`);
+    btn.disabled = true;
+    if (i === item.benar) btn.className = 'kuis-opt correct';
+    else if (i === oi) btn.className = 'kuis-opt wrong';
+  });
+  const fb = document.getElementById(`kuis-fb-${qi}`);
+  const isCorrect = oi === item.benar;
+  fb.className = `kuis-feedback show ${isCorrect ? 'ok' : 'no'}`;
+  fb.innerHTML = `<b>${isCorrect ? '✓ Benar!' : '✗ Kurang tepat.'}</b> ${item.explain}`;
+  document.getElementById(`pip-${qi}`).className = `kuis-pip ${isCorrect ? 'done-ok' : 'done-no'}`;
+  updateScore();
+}
+
+function updateScore() {
+  const answered = kuisAnswers.filter(a => a !== null).length;
+  const correct = kuisAnswers.filter((a, i) => a === kuisData[i].benar).length;
+  document.getElementById('score-val').textContent = correct;
+  document.getElementById('score-total').textContent = answered;
+  const msgs = ['Jawab soal di bawah untuk mulai!', 'Bagus, terus semangat!', 'Kamu sedang berkembang!', 'Pengetahuan digitalmu meningkat!', 'Keren! Setengah jalan sudah!', 'Hampir mencapai puncak!', 'Luar biasa! Kamu Digital Guardian sejati!'];
+  const idx = Math.min(Math.floor(correct / 2), msgs.length - 1);
+  if (answered > 0) document.getElementById('score-msg').textContent = msgs[idx];
+  if (answered === kuisData.length) {
+    const pct = Math.round(correct/kuisData.length*100);
+    let title = pct >= 90 ? '🏆 Digital Guardian Master!' : pct >= 70 ? '⭐ Digital Guardian!' : pct >= 50 ? '📱 Digital Learner' : '🌱 Masih Belajar — Terus Semangat!';
+    document.getElementById('score-msg').textContent = `Nilai akhir: ${pct}% — ${title}`;
+  }
+}
+
+function switchTab(e, id) {
+  const section = e.target.closest('.section');
+  section.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  section.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+buildScenarios();
+buildDiskusi();
+buildRefleksi();
+buildKuis();
+
+// ─── ADDITIONAL SECTIONS injected after kuis ───────────────────────────────
+
+// Helper: insert section after #kuis section
+function insertAfter(refId, html) {
+  const ref = document.getElementById(refId).closest('.section');
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  ref.parentNode.insertBefore(div.firstElementChild, ref.nextSibling);
+}
+
+// ── SECTION A: MINI SKENARIO MANDIRI (Role Play Cards) ─────────────────────
+function buildSkenarioMini() {
+  const html = `
+  <div class="divider page-break" id="roleplay-divider"></div>
+  <div class="section" id="roleplay">
+    <div class="section-header">
+      <div class="section-num">A</div>
+      <div>
+        <h2>Role Play Cards — Simulasi Percakapan Digital</h2>
+        <div class="section-subtitle">Aktivitas 15 menit — Dimainkan berpasangan atau kelompok 3 orang</div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div class="script-block">
+        <div class="script-role role-guru">Instruksi Guru</div>
+        <div class="script-text">
+          "Sekarang kita simulasikan situasi digital secara langsung! Satu orang jadi karakter di skenario, satu orang jadi kamu sebagai penerima pesan, dan satu orang jadi 'pengamat' yang mencatat apa yang terjadi. Setelah selesai, gantian peran. Tujuannya: rasakan langsung bagaimana tekanan sosial digital itu bekerja!"
+        </div>
+      </div>
+    </div>
+    <div class="rp-grid" id="rp-grid"></div>
+  </div>`;
+  const wrapper = document.querySelector('.wrapper');
+  const penilaian = document.getElementById('penilaian').closest('.section');
+  wrapper.insertBefore(createEl(html), penilaian);
+}
+
+function createEl(html) {
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  return t.content.firstChild;
+}
+
+const rolePlays = [
+  {
+    num: 1, title: "Tawaran Hadiah Mencurigakan", icon: "🎁",
+    color: "#fef3c7", border: "#f59e0b", labelColor: "#92400e",
+    konteks: "Kamu baru saja follow akun TikTok seseorang. Tiba-tiba kamu dapat DM.",
+    pesan: "Halo! Selamat, kamu terpilih mendapat hadiah voucher belanja Rp500.000! Klik link ini dan masukkan nama, nomor HP, dan alamat rumah kamu untuk klaim.",
+    peranA: "Kirimkan pesan ini dengan nada ramah dan meyakinkan — seolah ini hadiah nyata",
+    peranB: "Respons pesan ini dengan cara yang menurut kamu paling aman",
+    peranC: "Amati: apakah penerima langsung percaya? Ragu? Apa yang membuatnya curiga?",
+    diskusi: ["Apa yang membuat tawaran seperti ini terasa meyakinkan?", "Data apa yang tidak boleh kamu berikan kepada siapapun online?", "Bagaimana cara kamu mengecek apakah tawaran itu asli?"]
+  },
+  {
+    num: 2, title: "Tekanan Teman untuk Share Hoaks", icon: "📲",
+    color: "#f5f3ff", border: "#8b5cf6", labelColor: "#4c1d95",
+    konteks: "Temanmu yang sudah kamu kenal sejak SD mengirim pesan di grup WhatsApp kelas.",
+    pesan: "Guys! Harus dibaca ini! Kata-kata ini mengandung mantra jahat yang kalau tidak kamu share dalam 1 jam, kamu akan kena musibah. Share ke 10 orang sekarang ya! Udah banyak yang membuktikan ini nyata!",
+    peranA: "Kirim pesan ini dengan nada panik dan mendesak, seolah kamu benar-benar percaya",
+    peranB: "Respons di grup chat tersebut dengan cara yang tepat tanpa mempermalukan temanmu",
+    peranC: "Amati: bagaimana respons penerima? Apakah dia ikut panik atau tetap tenang?",
+    diskusi: ["Mengapa pesan berantai seperti ini masih berhasil menyebar meski terdengar tidak masuk akal?", "Bagaimana cara merespons teman yang menyebarkan hoaks di grup tanpa merusak pertemanan?", "Apa yang membuatmu sulit menolak pesan dari teman yang kamu percaya?"]
+  },
+  {
+    num: 3, title: "Cyberbullying di Grup Chat", icon: "💬",
+    color: "#fee2e2", border: "#ef4444", labelColor: "#7f1d1d",
+    konteks: "Kamu baru masuk grup chat baru berisi teman-teman sekolah. Tiba-tiba ada yang mulai.",
+    pesan: "Hahaha kalian tau nggak si Andi kemarin jatuh di depan kelas, MEMALUKAN banget. Nih foto-nya. 😂😂 Tag dia dong biar dia tau kita semua lihat!",
+    peranA: "Mulai cyberbullying ini — kirim pesan dan 'foto' (bayangkan) dengan nada mengolok",
+    peranB: "Kamu ada di grup itu. Apa yang akan kamu tulis sebagai respons?",
+    peranC: "Amati: apakah respondennya membela Andi? Diam? Ikut tertawa? Kenapa?",
+    diskusi: ["Apa yang membuat kita kadang ikut tertawa di chat meski dalam hati merasa tidak nyaman?", "Apa yang terjadi pada Andi jika foto itu beredar dan tidak ada yang bicara?", "Bagaimana formulasi kata-kata untuk menegur cyberbullying tanpa jadi target berikutnya?"]
+  },
+  {
+    num: 4, title: "Rayuan Grooming Online", icon: "⚠️",
+    color: "#fff7ed", border: "#f97316", labelColor: "#7c2d12",
+    konteks: "Kamu aktif di YouTube dan baru-baru ini mulai upload video. Seseorang yang kamu tidak kenal mengirim DM.",
+    pesan: "Hei! Gue sering nonton video lo dan lo keren banget. Gue mau jadi sponsor channel lo. Gue bisa beli semua equipment yang lo butuhin. Lo cuma perlu share nomor WA lo biar kita bisa diskusi lebih lanjut. Nama gue Hawk99.",
+    peranA: "Mainkan peran sebagai 'Hawk99' — coba buat tawaran ini terdengar nyata dan menarik",
+    peranB: "Kamu si pembuat konten — bagaimana responmu terhadap tawaran ini?",
+    peranC: "Amati: apa yang membuat tawaran ini terasa menggiurkan? Apa red flag-nya?",
+    diskusi: ["Apa tanda-tanda dari pesan Hawk99 yang menunjukkan ini mungkin grooming?", "Mengapa anak/remaja yang aktif di sosmed/YouTube lebih rentan terhadap pendekatan seperti ini?", "Apa yang harus kamu lakukan pertama kali sebelum merespons tawaran seperti ini?"]
+  },
+  {
+    num: 5, title: "Tekanan untuk Share Konten Viral", icon: "🎥",
+    color: "#fdf2f8", border: "#ec4899", labelColor: "#831843",
+    konteks: "Temanmu mengirim video ke kamu secara privat.",
+    pesan: "Bro/Sis, ini video viral banget — anak SMA lagi berantem. Yang kalah kelihatan parah banget lukanya. Kamu upload ke status WA kamu gak? Pasti banyak yang nonton. Kita bisa kasih caption kasihan tapi views kita naikkan!",
+    peranA: "Mainkan teman yang mengirim pesan ini dengan semangat dan persuasif",
+    peranB: "Respons temanmu — bagaimana kamu menolak tanpa merusak hubungan?",
+    peranC: "Amati: bagaimana penerima menyampaikan penolakannya? Apakah jelas dan tegas?",
+    diskusi: ["Mengapa alasan 'biar views naik' atau 'biar orang tahu' tidak membenarkan penyebaran video kekerasan?", "Apa hak privasi yang dimiliki korban dalam video tersebut?", "Bagaimana cara menolak ajakan teman untuk share konten berbahaya tanpa konflik?"]
+  },
+  {
+    num: 6, title: "Ajakan Bertemu Orang Online", icon: "🚨",
+    color: "#fee2e2", border: "#dc2626", labelColor: "#7f1d1d",
+    konteks: "Kamu sudah chatting online dengan seseorang selama 2 minggu. Mereka kelihatan baik dan mengerti kamu.",
+    pesan: "Gue udah ngerasa kenal kamu banget selama 2 minggu ini. Gue mau ketemu langsung! Besok ya? Gue tunggu kamu di taman dekat sekolah kamu jam 4 sore. Jangan bilang siapa-siapa ya — biar jadi kejutan!",
+    peranA: "Mainkan orang online ini — buat tawaran terdengar menarik dan 'tidak berbahaya'",
+    peranB: "Kamu si penerima pesan — bagaimana responmu?",
+    peranC: "Amati: apakah penerima melihat tanda bahaya? Apa saja tanda bahaya yang ada?",
+    diskusi: ["Sebutkan semua red flag dalam pesan ini (minimal 3)!", "Mengapa 'jangan bilang siapa-siapa' adalah salah satu tanda paling berbahaya?", "Apa aturan aman jika suatu hari ingin bertemu seseorang yang pertama kali dikenal online?"]
+  }
+];
+
+function buildRolePlay() {
+  const grid = document.getElementById('rp-grid');
+  if (!grid) return;
+  rolePlays.forEach(rp => {
+    const card = document.createElement('div');
+    card.style.cssText = `background:var(--surface);border:1.5px solid ${rp.border};border-radius:14px;overflow:hidden;margin-bottom:14px;`;
+    card.innerHTML = `
+      <div style="background:${rp.color};padding:14px 18px;border-bottom:1px solid ${rp.border}30;display:flex;align-items:center;gap:12px;">
+        <span style="font-size:24px;">${rp.icon}</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${rp.labelColor};">Kartu Role Play ${rp.num}</div>
+          <div style="font-size:15px;font-weight:700;color:var(--text-primary);">${rp.title}</div>
+        </div>
+      </div>
+      <div style="padding:16px 18px;">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Konteks Situasi</div>
+        <div style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.6;">${rp.konteks}</div>
+        <div style="background:var(--bg);border-left:3px solid ${rp.border};border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:14px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${rp.labelColor};margin-bottom:5px;">📩 Pesan yang Diterima</div>
+          <div style="font-size:13.5px;color:var(--text-primary);font-style:italic;line-height:1.65;">"${rp.pesan}"</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:14px;">
+          <div style="background:#f0fdf7;border:1px solid #d0f5e8;border-radius:8px;padding:10px 12px;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0a5c3e;margin-bottom:4px;">🎭 Peran A — Pengirim</div>
+            <div style="font-size:12.5px;color:#1a5e3a;line-height:1.55;">${rp.peranA}</div>
+          </div>
+          <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 12px;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#1e40af;margin-bottom:4px;">💬 Peran B — Penerima</div>
+            <div style="font-size:12.5px;color:#1e3a5f;line-height:1.55;">${rp.peranB}</div>
+          </div>
+          <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:10px 12px;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#78350f;margin-bottom:4px;">👁 Peran C — Pengamat</div>
+            <div style="font-size:12.5px;color:#78350f;line-height:1.55;">${rp.peranC}</div>
+          </div>
+        </div>
+        <div style="border-top:1px dashed var(--border);padding-top:12px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">💡 Diskusi Setelah Role Play</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            ${rp.diskusi.map((d,i) => `<div style="font-size:13px;color:var(--text-secondary);padding:6px 10px 6px 14px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--green-main);font-weight:700;">${i+1}.</span>${d}</div>`).join('')}
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── SECTION B: LEMBAR KERJA SISWA (LKS) ──────────────────────────────────
+function buildLembarKerja() {
+  const divider = document.createElement('div');
+  divider.className = 'divider page-break';
+  const section = document.createElement('div');
+  section.className = 'section';
+  section.id = 'lks';
+  section.innerHTML = `
+    <div class="section-header">
+      <div class="section-num">B</div>
+      <div>
+        <h2>Lembar Kerja Siswa (LKS) — Analisis 12 Skenario</h2>
+        <div class="section-subtitle">Dikerjakan mandiri saat bermain aplikasi — cetak atau isi digital</div>
+      </div>
+    </div>
+    <div style="background:#fff3cd;border:1.5px solid #f59e0b;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:#78350f;">
+      <b>📋 Petunjuk:</b> Saat bermain aplikasi Swipe Safe, catat jawabanmu untuk setiap skenario di tabel ini. Kamu tidak harus memainkan semua 12 — minimal 8 skenario. Ini akan digunakan untuk diskusi kelompok.
+    </div>
+    <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:#1a8a5e;color:white;">
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:5%;">#</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:10%;">Karakter</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:15%;">Topik</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:20%;">Pilihan yang Kamu Ambil</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:25%;">Alasan Pilihanmu</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:15%;">Risiko Utama</th>
+          <th style="padding:10px 12px;text-align:left;font-weight:600;width:10%;">Sulit? (⭐1–5)</th>
+        </tr>
+      </thead>
+      <tbody id="lks-tbody"></tbody>
+    </table>
+    </div>
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;">
+      <div style="border:1.5px dashed var(--border);border-radius:10px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">📌 Skenario Paling Berkesan</div>
+        <div style="min-height:60px;font-size:13px;color:var(--text-muted);">Tulis di sini skenario nomor berapa dan kenapa paling berkesan untukmu...</div>
+      </div>
+      <div style="border:1.5px dashed var(--border);border-radius:10px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">💡 Satu Hal Baru yang Kamu Pelajari</div>
+        <div style="min-height:60px;font-size:13px;color:var(--text-muted);">Sesuatu yang tidak kamu ketahui sebelumnya tentang keamanan online...</div>
+      </div>
+      <div style="border:1.5px dashed var(--border);border-radius:10px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">✅ Komitmen Digital Hari Ini</div>
+        <div style="min-height:60px;font-size:13px;color:var(--text-muted);">Satu perubahan konkret yang akan kamu lakukan mulai hari ini...</div>
+      </div>
+    </div>`;
+  const wrapper = document.querySelector('.wrapper');
+  const rpSection = document.getElementById('roleplay');
+  if (rpSection) {
+    wrapper.insertBefore(divider, rpSection.nextSibling);
+    wrapper.insertBefore(section, divider.nextSibling);
+  } else {
+    wrapper.appendChild(divider);
+    wrapper.appendChild(section);
+  }
+  const tbody = document.getElementById('lks-tbody');
+  skenarios.forEach((sc, i) => {
+    const tr = document.createElement('tr');
+    tr.style.cssText = i%2===0 ? 'background:var(--surface)' : 'background:var(--bg)';
+    tr.innerHTML = `
+      <td style="padding:10px 12px;font-weight:700;color:var(--green-main);">${sc.num}</td>
+      <td style="padding:10px 12px;font-weight:600;">${sc.char}</td>
+      <td style="padding:10px 12px;"><span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:${riskColors[sc.risk].bg};color:${riskColors[sc.risk].badge};">${sc.topic}</span></td>
+      <td style="padding:10px 12px;"><div style="min-height:40px;border:1px dashed var(--border);border-radius:6px;background:white;padding:4px 8px;font-size:12px;color:var(--text-muted);">Tulis jawabanmu...</div></td>
+      <td style="padding:10px 12px;"><div style="min-height:40px;border:1px dashed var(--border);border-radius:6px;background:white;padding:4px 8px;font-size:12px;color:var(--text-muted);">Alasanmu...</div></td>
+      <td style="padding:10px 12px;font-size:12.5px;color:var(--text-secondary);">${sc.riskLabel}</td>
+      <td style="padding:10px 12px;text-align:center;font-size:16px;">⭐</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+// ── SECTION C: PEER ASSESSMENT ────────────────────────────────────────────
+function buildPeerAssessment() {
+  const div = document.createElement('div');
+  div.innerHTML = `
+  <div class="divider page-break"></div>
+  <div class="section" id="peer">
+    <div class="section-header">
+      <div class="section-num">C</div>
+      <div>
+        <h2>Lembar Penilaian Teman Sejawat (Peer Assessment)</h2>
+        <div class="section-subtitle">Diisi saat sesi presentasi kelompok — tiap siswa menilai 2 kelompok lain</div>
+      </div>
+    </div>
+    <div style="background:#e0f2fe;border:1.5px solid #38bdf8;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:#0c4a6e;">
+      <b>📋 Petunjuk:</b> Dengarkan presentasi kelompok lain dengan seksama. Berikan nilai 1–4 untuk setiap aspek, lalu tulis komentar singkat yang membangun. Ingat: penilaian ini jujur dan untuk membantu teman belajar, bukan menjatuhkan.
+    </div>
+    <div id="peer-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:14px;"></div>
+  </div>`;
+  document.querySelector('.wrapper').appendChild(div.firstElementChild.nextElementSibling ? div : div);
+
+  // Actually append both children
+  const frag = document.createDocumentFragment();
+  while (div.firstChild) frag.appendChild(div.firstChild);
+  document.querySelector('.wrapper').appendChild(frag);
+
+  const grid = document.getElementById('peer-grid');
+  if (!grid) return;
+
+  const criteria = [
+    "Kejelasan penyampaian skenario",
+    "Kedalaman analisis risiko",
+    "Kualitas argumen dan alasan pilihan",
+    "Kemampuan menjawab pertanyaan",
+    "Percaya diri dan kerja sama tim"
+  ];
+
+  for (let g = 1; g <= 2; g++) {
+    const card = document.createElement('div');
+    card.style.cssText = 'background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;';
+    card.innerHTML = `
+      <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Penilaian Kelompok ${g}</div>
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:150px;"><div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:4px;">Nama Kelompok / Nomor</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px 10px;min-height:32px;background:var(--bg);font-size:13px;color:var(--text-muted);">Isi nama kelompok...</div></div>
+        <div style="flex:1;min-width:150px;"><div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:4px;">Skenario yang Dipresentasikan</div><div style="border:1px solid var(--border);border-radius:6px;padding:6px 10px;min-height:32px;background:var(--bg);font-size:13px;color:var(--text-muted);">Topik skenario...</div></div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px;">
+        <thead><tr style="background:var(--bg);">
+          <th style="padding:8px 10px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Aspek Penilaian</th>
+          <th style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);width:50px;">1</th>
+          <th style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);width:50px;">2</th>
+          <th style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);width:50px;">3</th>
+          <th style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);width:50px;">4</th>
+        </tr>
+        <tr style="background:var(--bg);"><td colspan="5" style="padding:2px 10px 6px;font-size:11px;color:var(--text-muted);font-style:italic;">1=Perlu perbaikan · 2=Cukup · 3=Baik · 4=Sangat baik</td></tr>
+        </thead>
+        <tbody>
+          ${criteria.map((c,ci) => `<tr style="${ci%2===0?'background:var(--surface)':'background:var(--bg)'}">
+            <td style="padding:9px 10px;color:var(--text-primary);">${c}</td>
+            ${[1,2,3,4].map(v => `<td style="padding:9px 10px;text-align:center;"><input type="radio" name="peer-${g}-${ci}" value="${v}" style="accent-color:var(--green-main);width:16px;height:16px;cursor:pointer;"></td>`).join('')}
+          </tr>`).join('')}
+        </tbody>
+      </table>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:6px;">💪 Yang Paling Kuat dari Presentasi Ini</div>
+        <div style="border:1px dashed var(--border);border-radius:6px;min-height:50px;padding:8px 10px;background:var(--bg);font-size:13px;color:var(--text-muted);">Tulis komentar positif...</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:6px;">📈 Satu Saran untuk Kelompok Ini</div>
+        <div style="border:1px dashed var(--border);border-radius:6px;min-height:50px;padding:8px 10px;background:var(--bg);font-size:13px;color:var(--text-muted);">Tulis saran yang membangun...</div>
+      </div>`;
+    grid.appendChild(card);
+  }
+}
+
+// ── SECTION D: LEMBAR OBSERVASI GURU ────────────────────────────────────
+function buildObservasi() {
+  const el = document.createElement('div');
+  el.innerHTML = `
+  <div class="divider page-break" id="obs-divider"></div>
+  <div class="section" id="observasi">
+    <div class="section-header">
+      <div class="section-num">D</div>
+      <div>
+        <h2>Lembar Observasi Guru — Catatan Proses Pembelajaran</h2>
+        <div class="section-subtitle">Diisi guru selama dan setelah sesi berlangsung</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:20px;">
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text-primary);">📊 Partisipasi Kelas</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          ${['Jumlah siswa hadir','Jumlah siswa yang berhasil login ke aplikasi','Jumlah siswa yang mainkan ≥8 skenario','Jumlah kelompok diskusi aktif','Jumlah kelompok yang presentasi'].map(label => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed var(--border);">
+            <div style="font-size:13px;color:var(--text-secondary);">${label}</div>
+            <div style="width:70px;border:1px solid var(--border);border-radius:6px;padding:4px 8px;text-align:center;background:var(--bg);font-size:13px;color:var(--text-muted);">...</div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text-primary);">⏱ Ketepatan Waktu</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          ${['Ice Breaking (target: 5 menit)','Apersepsi (target: 10 menit)','Eksplorasi App (target: 10 menit)','Bermain Mandiri (target: 20 menit)','Diskusi Kelompok (target: 15 menit)','Presentasi (target: 10 menit)','Kuis (target: 10 menit)','Penutup & Refleksi (target: 10 menit)'].map(label => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed var(--border);">
+            <div style="font-size:12.5px;color:var(--text-secondary);">${label}</div>
+            <div style="display:flex;gap:6px;">
+              <div style="border:1px solid var(--border);border-radius:6px;padding:3px 8px;background:var(--bg);font-size:12px;color:var(--text-muted);width:55px;text-align:center;">menit</div>
+              <select style="border:1px solid var(--border);border-radius:6px;padding:3px 6px;background:var(--bg);font-size:12px;color:var(--text-secondary);cursor:pointer;">
+                <option>✓ Tepat</option>
+                <option>⬆ Lebih</option>
+                <option>⬇ Kurang</option>
+              </select>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text-primary);">🧑‍🎓 Catatan Siswa Perlu Perhatian Khusus</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr style="background:var(--bg);">
+          <th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Nama/Inisial Siswa</th>
+          <th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Catatan Observasi</th>
+          <th style="padding:8px 12px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Tindak Lanjut</th>
+        </tr></thead>
+        <tbody>
+          ${[1,2,3,4,5].map(i => `<tr style="${i%2?'background:var(--surface)':'background:var(--bg)'}">
+            <td style="padding:10px 12px;"><div style="border:1px dashed var(--border);border-radius:5px;min-height:32px;padding:4px 8px;background:white;font-size:12.5px;color:var(--text-muted);">Nama siswa...</div></td>
+            <td style="padding:10px 12px;"><div style="border:1px dashed var(--border);border-radius:5px;min-height:32px;padding:4px 8px;background:white;font-size:12.5px;color:var(--text-muted);">Catatan...</div></td>
+            <td style="padding:10px 12px;"><select style="border:1px solid var(--border);border-radius:6px;padding:5px 8px;background:var(--bg);font-size:12px;width:100%;cursor:pointer;"><option>Pantau</option><option>Bicara pribadi</option><option>Hubungi orang tua</option><option>Rujuk ke BK</option></select></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+      <div style="background:var(--green-pale);border:1.5px solid var(--green-light);border-radius:14px;padding:18px;">
+        <div style="font-size:13px;font-weight:700;color:var(--green-dark);margin-bottom:8px;">✅ Yang Berjalan Baik</div>
+        <div style="border:1px dashed var(--green-light);border-radius:8px;min-height:80px;padding:8px 10px;font-size:13px;color:var(--text-muted);">Catat aspek pembelajaran yang paling efektif...</div>
+      </div>
+      <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:14px;padding:18px;">
+        <div style="font-size:13px;font-weight:700;color:#7c2d12;margin-bottom:8px;">⚡ Tantangan yang Dihadapi</div>
+        <div style="border:1px dashed #fed7aa;border-radius:8px;min-height:80px;padding:8px 10px;font-size:13px;color:var(--text-muted);">Kendala teknis, kondisi kelas, atau materi...</div>
+      </div>
+      <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:14px;padding:18px;">
+        <div style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:8px;">🔄 Perbaikan untuk Pertemuan Berikutnya</div>
+        <div style="border:1px dashed #bfdbfe;border-radius:8px;min-height:80px;padding:8px 10px;font-size:13px;color:var(--text-muted);">Apa yang akan kamu ubah/perbaiki?</div>
+      </div>
+    </div>
+  </div>`;
+  document.querySelector('.wrapper').appendChild(el.querySelector('#obs-divider'));
+  document.querySelector('.wrapper').appendChild(el.querySelector('#observasi'));
+}
+
+// ── SECTION E: PANDUAN ORANG TUA ────────────────────────────────────────
+function buildPanduan() {
+  const divider = document.createElement('div');
+  divider.className = 'divider page-break';
+  const section = document.createElement('div');
+  section.className = 'section';
+  section.id = 'panduan-ortu';
+  section.innerHTML = `
+    <div class="section-header">
+      <div class="section-num">E</div>
+      <div>
+        <h2>Panduan untuk Orang Tua / Wali</h2>
+        <div class="section-subtitle">Lembar komunikasi sekolah–rumah — fotokopi dan bagikan ke orang tua siswa</div>
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,#0a5c3e,#22b07d);border-radius:16px;padding:20px 24px;color:white;margin-bottom:20px;">
+      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;opacity:0.75;margin-bottom:6px;">Pesan dari Guru ke Orang Tua</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px;">Hari ini anak Anda belajar tentang Keamanan Digital</div>
+      <div style="font-size:14px;opacity:0.9;line-height:1.7;">Anak Anda baru saja menyelesaikan pembelajaran literasi digital menggunakan aplikasi Swipe Safe. Mereka belajar mengenali dan merespons risiko online dari 12 skenario nyata. Berikut adalah hal-hal yang bisa Anda lanjutkan di rumah.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:20px;">
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px;">🗣️ 5 Pertanyaan untuk Ngobrol dengan Anak Anda</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${[
+            "Skenario apa yang paling berkesan dari pelajaran hari ini? Kenapa?",
+            "Apakah ada situasi di skenario itu yang mirip dengan yang pernah kamu alami?",
+            "Dari semua yang kamu pelajari, apa yang paling mengejutkan?",
+            "Apa satu hal yang akan kamu lakukan berbeda setelah pelajaran ini?",
+            "Kalau kamu dapat pesan dari orang asing yang memberi hadiah, apa yang akan kamu lakukan?"
+          ].map((q,i) => `<div style="font-size:13px;color:var(--text-secondary);padding:6px 10px 6px 24px;position:relative;border-left:2px solid var(--green-light);line-height:1.55;"><span style="position:absolute;left:6px;color:var(--green-main);font-weight:700;">${i+1}.</span>${q}</div>`).join('')}
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px;">🔒 6 Langkah Praktis Orang Tua di Rumah</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${[
+            ["Buka komunikasi", "Tanyakan aktivitas online anak secara santai dan rutin — bukan interogasi"],
+            ["Buat kesepakatan", "Tentukan waktu, platform yang boleh diakses, dan aturan berbagi info pribadi"],
+            ["Aktifkan Safe Search", "Di Google, YouTube, dan browser — terutama untuk anak yang lebih muda"],
+            ["Kenali teman online anak", "Siapa saja yang mereka ajak bicara? Di platform apa?"],
+            ["Jadi tempat curhat aman", "Pastikan anak tahu mereka bisa cerita tanpa takut HP disita atau dimarahi"],
+            ["Ikuti akun anak (dengan izin)", "Follow akun anak di sosmed — bukan untuk mengawasi, tapi untuk hadir di dunia mereka"]
+          ].map(([title, desc]) => `<div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:6px;height:6px;border-radius:50%;background:var(--green-main);margin-top:6px;flex-shrink:0;"></div><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">${title}</div><div style="font-size:12.5px;color:var(--text-secondary);line-height:1.5;">${desc}</div></div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:12px;">🚨 Tanda-Tanda Anak Mengalami Masalah Online</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+        ${[
+          ["Perilaku berubah", "Lebih tertutup, mudah marah, atau sering menangis terutama setelah menggunakan HP"],
+          ["Rahasia berlebihan", "Selalu menutup layar HP saat Anda mendekat atau ganti password tanpa alasan"],
+          ["Hadiah tak dikenal", "Menerima hadiah, voucher, atau transfer uang dari orang yang tidak Anda kenal"],
+          ["Hindari sekolah", "Tiba-tiba tidak mau sekolah, nilai turun drastis, atau kehilangan teman"],
+          ["Konten mencurigakan", "Anda tidak sengaja melihat pesan atau konten yang tidak sesuai umur di HP mereka"],
+          ["Kecanduan layar", "Tidak bisa berhenti main HP meski sudah diingatkan, tidur larut, dan lupa makan"]
+        ].map(([title, desc]) => `<div style="background:#fff3cd;border:1px solid #f59e0b;border-radius:8px;padding:10px 12px;"><div style="font-size:13px;font-weight:700;color:#78350f;margin-bottom:4px;">⚠️ ${title}</div><div style="font-size:12.5px;color:#92400e;line-height:1.5;">${desc}</div></div>`).join('')}
+      </div>
+    </div>
+    <div style="background:var(--green-pale);border:1.5px solid var(--green-light);border-radius:14px;padding:18px;">
+      <div style="font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:10px;">📞 Jika Anak Mengalami Masalah Serius Online</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+        ${[
+          ["SAPA 129 / 08111129129", "Layanan Sahabat Perempuan dan Anak — KPPPA RI"],
+          ["UPTD PPA Kota Semarang", "0811 2845 332"],
+          ["P2TP2A Kab. Semarang", "0816 653 358"],
+          ["Guru BK Sekolah", "Hubungi langsung untuk konsultasi dan pendampingan"],
+          ["Polisi (110)", "Untuk kasus penipuan, peretasan, atau ancaman nyata"],
+          ["LBH Apik: 0821 2411 7070", "Lembaga Bantuan Hukum untuk kasus kekerasan berbasis gender"]
+        ].map(([title, desc]) => `<div style="background:white;border:1px solid var(--green-light);border-radius:8px;padding:10px 12px;"><div style="font-size:13px;font-weight:700;color:var(--green-dark);">${title}</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">${desc}</div></div>`).join('')}
+      </div>
+    </div>
+  `;
+  document.querySelector('.wrapper').appendChild(divider);
+  document.querySelector('.wrapper').appendChild(section);
+}
+
+// ── UPDATE TOC after all sections added ────────────────────────────────
+function updateTOC() {
+  const toc = document.querySelector('.toc-links');
+  if (!toc) return;
+  const extras = [
+    ['#roleplay','A. Role Play'],
+    ['#lks','B. Lembar Kerja'],
+    ['#peer','C. Peer Assessment'],
+    ['#observasi','D. Observasi Guru'],
+    ['#panduan-ortu','E. Panduan Ortu'],
+  ];
+  extras.forEach(([href, label]) => {
+    const a = document.createElement('a');
+    a.href = href; a.className = 'toc-link'; a.textContent = label;
+    toc.appendChild(a);
+  });
+}
+
+// Run all builders — ORDER MATTERS (DOM must exist before populating)
+buildSkenarioMini();   // creates #roleplay section with #rp-grid placeholder
+buildRolePlay();       // populates #rp-grid with role play cards
+buildLembarKerja();    // creates #lks with LKS table, inserts after #roleplay
+buildPeerAssessment(); // creates #peer with peer assessment forms
+buildObservasi();      // creates #observasi with teacher observation sheet
+buildPanduan();        // creates #panduan-ortu with parent guide
+setTimeout(updateTOC, 100);
+</script>
+</body>
+</html>
