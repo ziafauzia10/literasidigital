@@ -368,12 +368,104 @@ body {
 }
 .print-btn:hover { background: var(--green-mid); }
 
-/* NAV */
-.toc { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
-.toc-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 10px; }
-.toc-links { display: flex; flex-wrap: wrap; gap: 6px; }
-.toc-link { font-size: 12.5px; font-weight: 600; padding: 5px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: all 0.15s; }
-.toc-link:hover { background: var(--green-pale); border-color: var(--green-main); color: var(--green-dark); }
+/* NAV — STICKY */
+.toc {
+  display: none; /* hidden — replaced by sticky nav */
+}
+.sticky-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid var(--border);
+  box-shadow: 0 2px 16px rgba(10,92,62,0.08);
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
+}
+/* .sticky-nav.hidden removed — navbar always stays visible */
+.sticky-nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+}
+.sticky-nav-brand {
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.sticky-nav-logo {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, #0a5c3e, #22b07d);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.sticky-nav-title {
+  font-size: 13px; font-weight: 700; color: var(--text-primary);
+  white-space: nowrap;
+  display: none;
+}
+@media (min-width: 520px) { .sticky-nav-title { display: block; } }
+.sticky-nav-divider {
+  width: 1px; height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 520px) { .sticky-nav-divider { display: block; } }
+.sticky-nav-scroll {
+  flex: 1;
+  overflow-x: auto;
+  display: flex;
+  gap: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  align-items: center;
+  padding: 6px 0;
+}
+.sticky-nav-scroll::-webkit-scrollbar { display: none; }
+.nav-link {
+  font-size: 12px; font-weight: 600;
+  padding: 4px 12px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.nav-link:hover {
+  background: var(--green-pale);
+  border-color: var(--green-main);
+  color: var(--green-dark);
+}
+.nav-link.active {
+  background: var(--green-main);
+  border-color: var(--green-main);
+  color: white;
+}
+.nav-progress {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--green-main), #22d8a0);
+  border-radius: 2px;
+  transition: width 0.15s ease;
+  width: 0%;
+}
+@media print {
+  .sticky-nav { display: none !important; }
+}
+/* offset anchors so they aren't hidden under sticky nav */
+[id] { scroll-margin-top: 64px; }
 
 /* DIVIDER */
 .divider { height: 1px; background: var(--border); margin: 2rem 0; }
@@ -388,7 +480,34 @@ body {
 </style>
 </head>
 <body>
-<div class="wrapper">
+<!-- STICKY NAV -->
+<nav class="sticky-nav no-print" id="stickyNav">
+  <div class="sticky-nav-inner">
+    <a href="#" class="sticky-nav-brand">
+      <div class="sticky-nav-logo">🛡️</div>
+      <span class="sticky-nav-title">Swipe Safe</span>
+    </a>
+    <div class="sticky-nav-divider"></div>
+    <div class="sticky-nav-scroll" id="navScroll">
+      <a href="#pendahuluan" class="nav-link" data-section="pendahuluan">📖 Pendahuluan</a>
+      <a href="#tujuan" class="nav-link" data-section="tujuan">1. Tujuan</a>
+      <a href="#icebreaking" class="nav-link" data-section="icebreaking">2. Ice Breaking</a>
+      <a href="#apersepsi" class="nav-link" data-section="apersepsi">3. Apersepsi</a>
+      <a href="#alur" class="nav-link" data-section="alur">4. Alur Kegiatan</a>
+      <a href="#skenario" class="nav-link" data-section="skenario">5. 12 Skenario</a>
+      <a href="#diskusi" class="nav-link" data-section="diskusi">6. Diskusi Kelompok</a>
+      <a href="#refleksi" class="nav-link" data-section="refleksi">7. Refleksi</a>
+      <a href="#kuis" class="nav-link" data-section="kuis">8. Kuis Kompetisi</a>
+      <a href="#penilaian" class="nav-link" data-section="penilaian">9. Penilaian</a>
+      <a href="#reward" class="nav-link" data-section="reward">10. Reward</a>
+      <a href="#tips" class="nav-link" data-section="tips">11. Tips Guru</a>
+      <a href="#penutup" class="nav-link" data-section="penutup">12. Penutup</a>
+    </div>
+  </div>
+  <div class="nav-progress" id="navProgress"></div>
+</nav>
+
+<div class="wrapper" style="padding-top: 3.5rem;">
 
 <button class="print-btn no-print" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
 
@@ -2037,13 +2156,78 @@ function updateTOC() {
 }
 
 // Run all builders — ORDER MATTERS (DOM must exist before populating)
-buildSkenarioMini();   // creates #roleplay section with #rp-grid placeholder
-buildRolePlay();       // populates #rp-grid with role play cards
-buildLembarKerja();    // creates #lks with LKS table, inserts after #roleplay
-buildPeerAssessment(); // creates #peer with peer assessment forms
-buildObservasi();      // creates #observasi with teacher observation sheet
-buildPanduan();        // creates #panduan-ortu with parent guide
+buildSkenarioMini();
+buildRolePlay();
+buildLembarKerja();
+buildPeerAssessment();
+buildObservasi();
+buildPanduan();
 setTimeout(updateTOC, 100);
+
+// ── STICKY NAV BEHAVIOR ─────────────────────────────────────────────────
+(function() {
+  const nav = document.getElementById('stickyNav');
+  if (!nav) return;
+  const progress = document.getElementById('navProgress');
+  const navScroll = document.getElementById('navScroll');
+  let navLinks = Array.from(document.querySelectorAll('.nav-link[data-section]'));
+  let sectionIds = navLinks.map(l => l.dataset.section);
+
+  let lastScroll = 0;
+  let ticking = false;
+
+  function updateNav() {
+    const scrollY = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0;
+    if (progress) progress.style.width = pct + '%';
+
+    lastScroll = scrollY;
+
+    let active = null;
+    for (let i = sectionIds.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sectionIds[i]);
+      if (el && el.getBoundingClientRect().top <= 80) { active = sectionIds[i]; break; }
+    }
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === active));
+
+    if (active) {
+      const activeEl = document.querySelector('.nav-link[data-section="' + active + '"]');
+      if (activeEl && navScroll) {
+        const lL = activeEl.offsetLeft, lR = lL + activeEl.offsetWidth;
+        const sL = navScroll.scrollLeft, sR = sL + navScroll.offsetWidth;
+        if (lL < sL + 20) navScroll.scrollTo({ left: lL - 20, behavior: 'smooth' });
+        else if (lR > sR - 20) navScroll.scrollTo({ left: lR - navScroll.offsetWidth + 20, behavior: 'smooth' });
+      }
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+
+  // Add dynamic sections to nav after builders run
+  setTimeout(function() {
+    const extras = [
+      ['roleplay','A. Role Play'],
+      ['lks','B. Lembar Kerja'],
+      ['peer','C. Peer Assessment'],
+      ['observasi','D. Observasi Guru'],
+      ['panduan-ortu','E. Panduan Ortu'],
+    ];
+    extras.forEach(function([id, label]) {
+      if (!document.querySelector('.nav-link[data-section="' + id + '"]')) {
+        const a = document.createElement('a');
+        a.href = '#' + id; a.className = 'nav-link'; a.dataset.section = id; a.textContent = label;
+        navScroll.appendChild(a);
+        navLinks = Array.from(document.querySelectorAll('.nav-link[data-section]'));
+        sectionIds = navLinks.map(l => l.dataset.section);
+      }
+    });
+    updateNav();
+  }, 300);
+})();
 </script>
 </body>
 </html>
