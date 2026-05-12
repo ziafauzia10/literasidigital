@@ -384,6 +384,27 @@ body {
   transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.2s;
 }
 /* .sticky-nav.hidden removed — navbar always stays visible */
+/* fade wrapper for scroll hints */
+.sticky-nav-fade {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.sticky-nav-fade::before,
+.sticky-nav-fade::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 24px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.sticky-nav-fade::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,0.9), transparent); }
+.sticky-nav-fade::after  { right: 0; background: linear-gradient(to left,  rgba(255,255,255,0.9), transparent); }
+.sticky-nav-fade.show-left::before  { opacity: 1; }
+.sticky-nav-fade.show-right::after  { opacity: 1; }
 .sticky-nav-inner {
   max-width: 960px;
   margin: 0 auto;
@@ -422,14 +443,22 @@ body {
 .sticky-nav-scroll {
   flex: 1;
   overflow-x: auto;
+  overflow-y: hidden;
   display: flex;
   gap: 4px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   align-items: center;
   padding: 6px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-light) transparent;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
 }
-.sticky-nav-scroll::-webkit-scrollbar { display: none; }
+.sticky-nav-scroll.dragging { cursor: grabbing; }
+.sticky-nav-scroll::-webkit-scrollbar { height: 3px; }
+.sticky-nav-scroll::-webkit-scrollbar-track { background: transparent; }
+.sticky-nav-scroll::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 3px; }
+.sticky-nav-scroll::-webkit-scrollbar-thumb:hover { background: var(--green-main); }
 .nav-link {
   font-size: 12px; font-weight: 600;
   padding: 4px 12px;
@@ -488,6 +517,7 @@ body {
       <span class="sticky-nav-title">Swipe Safe</span>
     </a>
     <div class="sticky-nav-divider"></div>
+    <div class="sticky-nav-fade" id="navFade">
     <div class="sticky-nav-scroll" id="navScroll">
       <a href="#pendahuluan" class="nav-link" data-section="pendahuluan">📖 Pendahuluan</a>
       <a href="#tujuan" class="nav-link" data-section="tujuan">1. Tujuan</a>
@@ -503,6 +533,7 @@ body {
       <a href="#tips" class="nav-link" data-section="tips">11. Tips Guru</a>
       <a href="#penutup" class="nav-link" data-section="penutup">12. Penutup</a>
     </div>
+    </div><!-- /navFade -->
   </div>
   <div class="nav-progress" id="navProgress"></div>
 </nav>
@@ -2227,6 +2258,47 @@ setTimeout(updateTOC, 100);
     });
     updateNav();
   }, 300);
+// ── DRAG-TO-SCROLL NAVBAR ───────────────────────────────────────────────
+(function() {
+  var scroll = document.getElementById('navScroll');
+  var fade   = document.getElementById('navFade');
+  if (!scroll || !fade) return;
+
+  var isDragging = false, startX = 0, scrollStart = 0, moved = false;
+
+  function updateFade() {
+    var sl = scroll.scrollLeft;
+    var max = scroll.scrollWidth - scroll.clientWidth;
+    fade.classList.toggle('show-left',  sl > 4);
+    fade.classList.toggle('show-right', sl < max - 4);
+  }
+
+  scroll.addEventListener('scroll', updateFade, { passive: true });
+  setTimeout(updateFade, 400);
+
+  // Mouse drag
+  scroll.addEventListener('mousedown', function(e) {
+    isDragging = true; moved = false;
+    startX = e.pageX - scroll.offsetLeft;
+    scrollStart = scroll.scrollLeft;
+    scroll.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    var x = e.pageX - scroll.offsetLeft;
+    var delta = x - startX;
+    if (Math.abs(delta) > 3) moved = true;
+    scroll.scrollLeft = scrollStart - delta;
+  });
+  document.addEventListener('mouseup', function() {
+    isDragging = false;
+    scroll.classList.remove('dragging');
+  });
+  // Prevent click on links after drag
+  scroll.addEventListener('click', function(e) {
+    if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
 })();
 </script>
 </body>
